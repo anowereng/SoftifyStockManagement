@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Sampan">
+      <HintPath>Sampan.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
