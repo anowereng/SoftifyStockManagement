@@ -1,17 +1,79 @@
-<!-- <form class="form-signin"> -->
-  <div class="container"  (ngSubmit)="login()">  
-    <img class="mb-4" src="../../assets/images/bootstrap-solid.svg" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-  <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
+
+
+<div class="preloader" style="display: none;">
+  <div class="lds-ripple">
+    <div class="lds-pos"></div>
+    <div class="lds-pos"></div>
   </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-  <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
-<!-- </form> -->
+</div>
+
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-white">
+  <div class="auth-box bg-dark border-top border-secondary">
+    <div id="loginform" >
+      <div class="text-center p-t-20 p-b-20">
+        <span class="db"><img src="../../assets/images/logo.png" alt="logo"></span>
+      </div>
+      <!-- Form -->
+      <form class="form-horizontal m-t-20" id="loginform"  #loginForm="ngForm" (ngSubmit)="login()">
+        <div class="row p-b-30">
+          <div class="col-12">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+              </div>
+              <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username"
+                aria-describedby="basic-addon1" required="" [(ngModel)]="model.UserName" required
+                    name="UserName" autocomplete="asda">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+              </div>
+              <input class="form-control form-control-lg" placeholder="Password" aria-label="Password"
+                aria-describedby="basic-addon1" required="" type="password" placeholder="UserPassword" [(ngModel)]="model.UserPassword" required
+                    name="UserPassword">
+  
+            </div>
+          </div>
+        </div>
+        <div class="row border-top border-secondary">
+          <div class="col-12">
+            <div class="form-group">
+              <div class="p-t-20">
+                <button class="btn btn-info" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i> Lost
+                  password?</button>
+                <button class="btn btn-success float-right" type="submit">Login</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="recoverform">
+      <div class="text-center">
+        <span class="text-white">Enter your e-mail address below and we will send you instructions how to recover a
+          password.</span>
+      </div>
+      <div class="row m-t-20">
+        <!-- Form -->
+        <form class="col-12" action="index.html">
+          <!-- email -->
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
+            </div>
+            <input type="text" class="form-control form-control-lg" placeholder="Email Address" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <!-- pwd -->
+          <div class="row m-t-20 p-t-20 border-top border-secondary">
+            <div class="col-12">
+              <a class="btn btn-success" href="#" id="to-login" name="action">Back To Login</a>
+              <button class="btn btn-info float-right" type="button" name="action">Recover</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

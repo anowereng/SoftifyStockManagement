@@ -16,10 +16,7 @@ export class TopbarComponent implements OnInit {
 
   }
   loggedIn() {
-    // const token = localStorage.getItem('token');
-    // return !!token;
     return this.loginService.loggedIn();
-
   }
   logout() {
     localStorage.removeItem('token');

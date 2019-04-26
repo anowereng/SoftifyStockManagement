@@ -21,7 +21,7 @@
     "@angular/router": "~7.2.0",
     "ag-grid-angular": "^19.1.2",
     "ag-grid-community": "^19.1.4",
-    "alertify": "^0.3.0",
+    "alertifyjs": "^1.11.2",
     "bootstrap": "^4.1.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",

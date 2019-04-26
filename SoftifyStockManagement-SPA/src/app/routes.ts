@@ -17,4 +17,8 @@ export const appRoutes: Routes = [
         ]
     },
     { path: '**', redirectTo: 'login', pathMatch: 'full' },
+
+    // { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+    // { path: 'login', component: LoginComponent },
+    // { path: '**', redirectTo: '' }
 ];

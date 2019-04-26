@@ -37,7 +37,8 @@
               "src/assets/extra-libs/sparkline/sparkline.js",
               "src/dist/js/waves.js",
               "src/dist/js/sidebarmenu.js",
-              "src/dist/js/custom.min.js"
+              "src/dist/js/custom.min.js",
+              "node_modules/alertifyjs/build/alertify.min.js"
         
             ]
           },

@@ -20,9 +20,4 @@ export class FooterComponent implements OnInit {
     return this.loginService.loggedIn();
 
   }
-  logout() {
-    localStorage.removeItem('token');
-    this.alertify.message('logged out !!');
-    this.router.navigate(['/login']);
-  }
 }
