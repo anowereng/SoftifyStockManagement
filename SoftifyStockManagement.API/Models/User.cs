@@ -1,8 +1,10 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
+
+
 namespace SoftifyStockManagement.API.API.Models
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.Data;
 
     public class User
     {

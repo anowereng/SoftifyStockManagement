@@ -16,6 +16,7 @@ import { CustomerService } from './_services/customer.service';
 import { AlertifyService } from './_services/alertify.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -25,7 +26,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent, TopbarComponent, SidebarComponent,
-     DashboardComponent, FooterComponent
+     DashboardComponent, FooterComponent, RegisterComponent
   ],
   imports: [
     BrowserModule,

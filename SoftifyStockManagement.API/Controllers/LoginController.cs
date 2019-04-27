@@ -19,71 +19,69 @@ namespace SoftifyStockManagement.API.API.Controllers
     public class LoginController : ControllerBase
     {
         private readonly LoginQuery _lQuery;
-        private readonly IConfiguration _config ;
+        private readonly IConfiguration _config;
         public LoginController(LoginQuery lQuery, IConfiguration connfig)
         {
             _lQuery = lQuery;
-            _config= connfig;
+            _config = connfig;
         }
 
         [HttpPost("Register")]
         public IActionResult Register([FromBody] User model)
         {
-           // throw new Exception("Computer Syas NO !!!");
-           var createdUser="";
+            // throw new Exception("Computer Syas NO !!!");
+        
             model.UserName = model.UserName.ToLower();
 
             if (ModelState.IsValid)
             {
-                    if (_lQuery.UserExists(model.UserName))
+                if (_lQuery.UserExists(model.UserName))
 
                     return BadRequest("userName already exists, try different name !!");
 
-                    else
-                
-                        _lQuery.CreateUser(model);
-                return  Ok("User Create Successfully !!");
+                else
+
+                    _lQuery.CreateUser(model);
+                return Ok("User Create Successfully !!");
             }
             else
             {
                 var errors = ModelState.Select(x => x.Value.Errors)
-                                    .Where(y=>y.Count>0)
+                                    .Where(y => y.Count > 0)
                                     .ToList();
-                  return BadRequest();
+                return BadRequest();
             }
-
-      
-       
-       
         }
 
         [HttpPost("Login")]
-        public IActionResult Login (User model)
+        public IActionResult Login(User model)
         {
             //  throw new Exception("Computer Syas NO !!!");
-           var amodel = _lQuery.LoginUser(model.UserName, model.UserPassword);
-          if(amodel==null)  return Unauthorized();       
-        var claims = new []
-        {
+            var amodel = _lQuery.LoginUser(model.UserName, model.UserPassword);
+            if (amodel == null) return Unauthorized();
+            var claims = new[]
+            {
             new Claim(ClaimTypes.NameIdentifier,amodel.UserId.ToString()),
             new Claim(ClaimTypes.Name,amodel.UserName)
         };
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
-   
-        var creds = new SigningCredentials(key,SecurityAlgorithms.HmacSha512Signature);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
 
-        var tokenDescriptor = new SecurityTokenDescriptor{
-            Subject = new ClaimsIdentity(claims),
-            Expires= DateTime.Now.AddMinutes(5),
-            SigningCredentials = creds
-        };
-    
-        var tokenHandler= new JwtSecurityTokenHandler();
-        var token =tokenHandler.CreateToken(tokenDescriptor);
-        return Ok(new {
-            token= tokenHandler.WriteToken(token)
-        });
-    }
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddMinutes(5),
+                SigningCredentials = creds
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return Ok(new
+            {
+                token = tokenHandler.WriteToken(token)
+            });
+        }
 
 
     }
