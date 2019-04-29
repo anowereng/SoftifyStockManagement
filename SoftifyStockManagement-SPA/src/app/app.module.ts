@@ -32,6 +32,7 @@ export function tokenGetter() {
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     JwtModule.forRoot({
       config: {

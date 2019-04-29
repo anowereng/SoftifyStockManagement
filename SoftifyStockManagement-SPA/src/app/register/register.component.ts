@@ -12,51 +12,22 @@ import { User } from '../_models/Users';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @Output() cancelRegister = new EventEmitter();
-  user: User;
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
 
   constructor(private authService: LoginService, private router: Router,
     private alertify: AlertifyService, private fb: FormBuilder) { }
 
+
   ngOnInit() {
-    this.bsConfig = {
-      containerClass: 'theme-red'
-    };
-    this.createRegisterForm();
-  }
-
-  createRegisterForm() {
-    this.registerForm = this.fb.group({
-      gender: ['male'],
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
-      confirmPassword: ['', Validators.required]
-    }, {validator: this.passwordMatchValidator});
-  }
-
-  passwordMatchValidator(g: FormGroup) {
-    return g.get('password').value === g.get('confirmPassword').value ? null : {'mismatch': true};
+    this.registerForm = new FormGroup({
+      username: new FormControl(),
+      password:  new FormControl(),
+      confirmPassword: new FormControl()
+    });
   }
 
   register() {
-    if (this.registerForm.valid) {
-      this.user = Object.assign({}, this.registerForm.value);
-      this.authService.register(this.user).subscribe(() => {
-        this.alertify.success('Registration successful');
-      }, error => {
-        this.alertify.error(error);
-      }, () => {
-        this.authService.login(this.user).subscribe(() => {
-          this.router.navigate(['/dashboard']);
-        });
-      });
-    }
+    this.registerForm.value();
   }
-
-  cancel() {
-    this.cancelRegister.emit(false);
-  }
-
 }
