@@ -10,8 +10,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using SoftifyStockManagement.API.API.Data;
-using SoftifyStockManagement.API.API.Helpers;
+using SoftifyStockManagement.API.SQL_Query;
+using SoftifyStockManagement.API.Helpers;
+using SoftifyStockManagement.API.SQL_Query;
 
 namespace SoftifyStockManagement.API
 {

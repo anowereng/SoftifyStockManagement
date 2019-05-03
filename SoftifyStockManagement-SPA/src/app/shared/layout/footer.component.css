@@ -1,1 +1,3 @@
- .footer { position: fixed;}
+ .footer { position: fixed;
+   height: 30px;
+ }

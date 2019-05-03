@@ -9,13 +9,11 @@ import { LoginService } from './_services/login.service';
 })
 export class AppComponent implements OnInit {
   jwtHelper = new JwtHelperService();
-  public IsContainerfluid: any;
   constructor(private loginservice: LoginService) { }
   ngOnInit() {
     const token = localStorage.getItem('token');
     if (token) {
       this.loginservice.decodetoken = this.jwtHelper.decodeToken(token);
-      this.IsContainerfluid = 'container-fluid';
     }
   }
   loggedIn() {

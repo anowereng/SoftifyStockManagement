@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace SoftifyStockManagement.API.API.Helpers
+namespace SoftifyStockManagement.API.Helpers
 {
     public static class Extensions
     {

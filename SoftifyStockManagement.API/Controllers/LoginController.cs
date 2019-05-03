@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SoftifyStockManagement.API.API.Models;
+using SoftifyStockManagement.API.Models;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
-using SoftifyStockManagement.API.API.Data;
+using SoftifyStockManagement.API.SQL_Query;
 
-namespace SoftifyStockManagement.API.API.Controllers
+namespace SoftifyStockManagement.API.Controllers
 {
 
     [Route("api/[controller]")]
@@ -42,7 +42,7 @@ namespace SoftifyStockManagement.API.API.Controllers
                 else
 
                     _lQuery.CreateUser(model);
-                return Ok("User Create Successfully !!");
+                return Ok();
             }
             else
             {
@@ -82,6 +82,24 @@ namespace SoftifyStockManagement.API.API.Controllers
                 token = tokenHandler.WriteToken(token)
             });
         }
+
+        [HttpGet("GetUser")]
+        public IActionResult GetAllUser()
+        {
+            string amodel = _lQuery.GetUser();
+            if (amodel != null)
+                return Ok(amodel);
+            else
+                return BadRequest();
+            
+        }
+
+        //public IActionResult Get()
+        //{
+        //    return new OkObjectResult(new Item { Id = 123, Name = "Hero" });
+        //}
+        //return new ObjectResult(new Item { Id = 123, Name = "Hero" }) { StatusCode = 200 };
+        //return StatusCode( 200, new Item { Id = 123, Name = "Hero" });
 
 
     }

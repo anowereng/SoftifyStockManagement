@@ -1,4 +1,4 @@
-namespace UdemyCurse.API.Models
+namespace SoftifyStockManagement.API.Models
 {
     public class Users
     {

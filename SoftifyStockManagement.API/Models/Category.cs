@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-namespace SoftifyStockManagement.API.API.Models
+namespace SoftifyStockManagement.API.Models
 {
     public class Category
     {

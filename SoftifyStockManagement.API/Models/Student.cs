@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoftifyStockManagement.API.API.Models
+namespace SoftifyStockManagement.API.Models
 {
     public class Student
     {

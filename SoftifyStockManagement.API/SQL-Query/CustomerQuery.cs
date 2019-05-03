@@ -1,10 +1,9 @@
 using Sampan;
 using System;
 using System.Data;
-using SoftifyStockManagement.API.API.Helpers;
 using SoftifyStockManagement.API.Helpers;
 
-namespace SoftifyStockManagement.API.API.SQL_Query
+namespace SoftifyStockManagement.API.SQL_Query
 {
     public class CustomerQuery
     {

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 
 
-namespace SoftifyStockManagement.API.API.Models
+namespace SoftifyStockManagement.API.Models
 {
 
     public class User
@@ -14,6 +14,7 @@ namespace SoftifyStockManagement.API.API.Models
         [Required]
         [StringLength(8,MinimumLength=4,ErrorMessage="You must specify password between 4 and 8")]
         public string UserPassword { get; set; }
+        public string UserMail { get; set; }
         public string DisplayName { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }

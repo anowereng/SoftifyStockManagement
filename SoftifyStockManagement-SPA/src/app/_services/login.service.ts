@@ -9,13 +9,13 @@ import { environment } from '../../environments/environment';
 
 export class LoginService {
 
-  baseUrl = environment.apiUrl + 'login/login';
+  baseUrl = environment.apiUrl + 'login/';
   jwtHelper = new JwtHelperService();
   decodetoken: any;
 constructor(private http: HttpClient) { }
 
 login(model: any) {
-  return this.http.post(this.baseUrl, model)
+  return this.http.post(this.baseUrl + 'login', model)
   .pipe(
   map((response: any) => {
   const user = response;

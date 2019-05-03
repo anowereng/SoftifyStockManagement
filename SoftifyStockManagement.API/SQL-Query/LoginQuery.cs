@@ -2,9 +2,10 @@ using System;
 using Sampan;
 using System.Data;
 using System.Collections;
-using SoftifyStockManagement.API.API.Models;
-
-namespace SoftifyStockManagement.API.API.Data
+using System.Linq.Expressions;
+using SoftifyStockManagement.API.Models;
+using SoftifyStockManagement.API.Helpers;
+namespace SoftifyStockManagement.API.SQL_Query
 {
     public class LoginQuery
     {
@@ -35,8 +36,8 @@ namespace SoftifyStockManagement.API.API.Data
             var variable = CoreSQL.CoreSQL_GetDoubleData(Query);
             try
             {
-                var sqlQuery = "Insert Into tbl_loginUsers (UserId, UserName, UserPass)" +
-                               " Values ('" + variable + "','" + model.UserName.ToLower() + "','" + CoreSQL.GetEncryptedData(model.UserPassword) + "')";
+                var sqlQuery = "Insert Into tbl_loginUsers (UserId, UserName, UserPass, UserMail, DisplayName)" +
+                               " Values ('" + variable + "','" + model.UserName.ToLower() + "','" + CoreSQL.GetEncryptedData(model.UserPassword) + "', '"+model.UserMail+"','"+model.DisplayName+"')";
                 arrayList.Add(sqlQuery);
                 CoreSQL.CoreSQL_SaveDataUseSQLCommand(arrayList);
                 return "Successfully Save.";
@@ -84,6 +85,15 @@ namespace SoftifyStockManagement.API.API.Data
             finally
             {
             }
+        }
+
+        public string GetUser()
+        {
+            DataSet dsList = new DataSet();
+            CoreSQLConnection CoreSQL = new CoreSQLConnection();
+            string strQuery = "Exec prcGetValidateLogin";
+            dsList = CoreSQL.CoreSQL_GetDataSet(strQuery);
+            return clsCommon.JsonSerialize(dsList.Tables[0]);
         }
 
     }

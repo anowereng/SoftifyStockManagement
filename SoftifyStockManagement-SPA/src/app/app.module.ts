@@ -17,7 +17,9 @@ import { AlertifyService } from './_services/alertify.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
-
+import { AgGridModule } from 'ag-grid-angular';
+import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
+import { CustomizedCellComponent } from './customized-cell/customized-cell.component';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -26,7 +28,9 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent, TopbarComponent, SidebarComponent,
-     DashboardComponent, FooterComponent, RegisterComponent
+    DashboardComponent, FooterComponent, RegisterComponent,
+    jqxGridComponent,
+    CustomizedCellComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +38,7 @@ export function tokenGetter() {
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
+    AgGridModule.withComponents(CustomizedCellComponent),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
