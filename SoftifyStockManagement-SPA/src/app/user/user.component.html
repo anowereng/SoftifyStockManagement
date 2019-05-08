@@ -1,0 +1,145 @@
+
+
+<div class="row">
+
+  <div class="col-md-6">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="card">
+        <div class="card-header bg-secondary text-white">
+          <h4 class="card-title">User Registration Form</h4>
+        </div>
+        <div class="card-body">
+
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label col-form-label text-right">UserName :</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}"
+                     formControlName="username"
+                     placeholder="username">
+              <div class="invalid-feedback">Please choose a User Name</div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label col-form-label text-right">Email :</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" [ngClass]="{'is-invalid': registerForm.get('usermail').errors && registerForm.get('usermail').touched}"
+                     formControlName="usermail"
+                     placeholder="usermail">
+              <div class="invalid-feedback">Please choose a usermail</div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label text-right">Password : </label>
+            <div class="col-sm-8">
+              <input type="password" [ngClass]="{'is-invalid': registerForm.get('userpassword').errors && registerForm.get('userpassword').touched}"
+                     class="form-control"
+                     formControlName="userpassword"
+                     placeholder="Password">
+            </div>
+            <div class="invalid-feedback" *ngIf="registerForm.get('userpassword').hasError('required') && registerForm.get('userpassword').touched">
+              Password is required
+            </div>
+            <div class="invalid-feedback" *ngIf="registerForm.get('userpassword').hasError('minlength') && registerForm.get('userpassword').touched">
+              Password must be at least 4 characters
+            </div>
+            <div class="invalid-feedback"
+                 *ngIf="registerForm.get('userpassword').hasError('maxlength') && registerForm.get('userpassword').touched">
+              Password cannot exceed 8 characters
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label text-right">Confirm Password :</label>
+            <div class="col-sm-8">
+              <input [ngClass]="{'is-invalid': registerForm.get('confirmPassword').errors  && registerForm.get('confirmPassword').touched
+                     || registerForm.get('confirmPassword').touched && registerForm.hasError('mismatch')}"
+                     type="password"
+                     class="form-control"
+                     formControlName="confirmPassword"
+                     placeholder="Confirm Password">
+
+              <div class="invalid-feedback" *ngIf="registerForm.get('confirmPassword').hasError('required')  && registerForm.get('confirmPassword').touched">
+                Confirm Password is required
+              </div>
+              <div class="invalid-feedback" *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword').touched">
+                Passwords must match
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword5" class="col-sm-4 col-form-label text-right">Display Name :</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.get('displayname').errors && registerForm.get('displayname').touched}"
+                     formControlName="displayname"
+                     placeholder="displayname">
+            </div>
+          </div>
+
+
+
+
+        </div>
+        <div class="card-footer text-white">
+
+
+          <button type="submit" class="btn btn-secondary" [disabled]="!registerForm.valid">Sign in</button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <!--[paginator]="true"
+      -->
+    <p-table [value]="rowData" [responsive]="true" [scrollable]="true"  scrollHeight="500px"  [resizableColumns]="true" [reorderableColumns]="true"
+             >
+      <ng-template pTemplate="header">
+        <tr>
+          <!--<th>UserName</th>
+        <th>UserPass</th>
+        <th>UserMail</th>
+        <th>DisplayName</th>-->
+          <th *ngFor="let col of cols" [pSortableColumn]="col.field"  pReorderableColumn>
+            {{col.header}}
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-car>
+        <tr>
+          <!--<td>{{car.UserName}}</td>
+        <td>{{car.UserPass}}</td>
+        <td>{{car.UserMail}}</td>
+        <td>{{car.DisplayName}}</td>-->
+
+          <td *ngFor="let col of cols">
+            {{car[col.field]}}
+          </td>
+        </tr>
+
+      </ng-template>
+    </p-table>
+    <!--<p-table [value]="rowData">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Vin</th>
+        <th>Year</th>
+        <th>Brand</th>
+        <th>Color</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-car>
+      <tr>
+        <td>{{car.UserName}}</td>
+        <td>{{car.year}}</td>
+        <td>{{car.brand}}</td>
+        <td>{{car.color}}</td>
+      </tr>
+    </ng-template>
+  </p-table>-->
+
+  </div>
+</div>
+
+
+

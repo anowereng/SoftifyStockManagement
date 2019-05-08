@@ -1,42 +1,43 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AlertifyService } from '../_services/alertify.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { Router } from '@angular/router';
 import { LoginService } from '../_services/login.service';
 import { User } from '../_models/Users';
 import { HttpClient } from '@angular/common/http';
-import { TableModule } from 'primeng/table';
-import { CustomizedCellComponent } from '../customized-cell/customized-cell.component';
 
+export interface Car {
+  vin;
+  year;
+  brand;
+  color;
+}
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class RegisterComponent implements OnInit {
-  constructor ( private authService: LoginService, private router: Router,
+export class UserComponent implements OnInit {
+  cars = [{}];
+  constructor(private authService: LoginService, private router: Router,
     private alertify: AlertifyService, private fb: FormBuilder, private http: HttpClient) { }
   registerForm: FormGroup;
   rowData: any; user: User;
-  private gridApi;
-  private frameworkComponents;
-  columnDefs = [
-    { headerName: 'Id', field: 'UserId', width:70, filter:'agNumberColumnFilter'},
-    { headerName: 'UserName', field: 'UserName', width: 150, filter: 'agTextColumnFilter'},
-    { headerName: 'UserPass', field: 'UserPass', width: 150, filter: 'agDateColumnFilter' },
-    { headerName: 'UserMail', field: 'UserMail', width: 150},
-    { headerName: 'DisplayName', field: 'DisplayName', width: 150},
-    { headerName: 'Display', width: 150, cellRenderer: 'customizedDisplaycell' }
-  ];
+
+  cols: any[];
+
 
   ngOnInit() {
     this.getAllRegister();
     this.createRegisterForm();
-    this.frameworkComponents = {
-      customizedDisplaycell: CustomizedCellComponent
-    }
+    this.cols = [
+      { header: 'Id', field: 'UserId', width: 70 },
+      { header: 'UserName', field: 'UserName' },
+      { header: 'UserPass', field: 'UserPass' },
+      { header: 'UserMail', field: 'UserMail' },
+      { header: 'DisplayName', field: 'DisplayName' }
+    ];
   }
 
   createRegisterForm() {
@@ -66,7 +67,7 @@ export class RegisterComponent implements OnInit {
         this.alertify.error(error);
       }, () => {
         this.authService.login(this.user).subscribe(() => {
-          this.router.navigate(['/register']);
+          this.router.navigate(['/user']);
         });
       });
     }
@@ -74,15 +75,12 @@ export class RegisterComponent implements OnInit {
   getAllRegister() {
     this.http.get('http://localhost:5000/api/login/GetUser').subscribe(response => {
       this.rowData = response;
-    console.log(response);
+      console.log(response);
     }, error => {
       console.log(error);
     });
   }
-  onBtnExport() {
-    var params = {};
-    this.gridApi.exportDataAsCsv(params);
-  }
+
 
   //rowData = this.registerdata;
 

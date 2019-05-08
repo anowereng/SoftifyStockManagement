@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TopbarComponent } from './shared/layout/topbar.component';
@@ -20,6 +21,8 @@ import { RegisterComponent } from './register/register.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
 import { CustomizedCellComponent } from './customized-cell/customized-cell.component';
+import { UserComponent } from './user/user.component';
+import { TableModule } from 'primeng/table';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -30,13 +33,16 @@ export function tokenGetter() {
     LoginComponent, TopbarComponent, SidebarComponent,
     DashboardComponent, FooterComponent, RegisterComponent,
     jqxGridComponent,
-    CustomizedCellComponent
+    CustomizedCellComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    TableModule,
     RouterModule.forRoot(appRoutes),
     AgGridModule.withComponents(CustomizedCellComponent),
     JwtModule.forRoot({

@@ -3,6 +3,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guard/auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { UserComponent } from './user/user.component';
+
 
 export const appRoutes: Routes = [
     { path: '', component: LoginComponent },
@@ -13,6 +15,7 @@ export const appRoutes: Routes = [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'register', component: RegisterComponent },
           { path: 'login', component: LoginComponent },
+          { path: 'user', component: UserComponent },
             // { path: 'messages', component: MessagesComponent },
             // { path: 'customer-list', component: CustomerListComponent },
             // { path: 'customer-list/:id', component: CustomerDetailsComponent },
