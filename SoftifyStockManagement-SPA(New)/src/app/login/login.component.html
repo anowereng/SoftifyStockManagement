@@ -1,0 +1,42 @@
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+<link rel="stylesheet" type="text/css" href="style.css"> -->
+
+  <div class="modal-dialog text-center">
+    <div class="col-9 main-section">
+      <div class="modal-content">
+
+        <!-- <div class="user-img">
+          <img src="../../../assets/images/login-img/face.png">
+        </div> -->
+
+        <div class="col-12 form-input">
+
+            <form class="form-horizontal m-t-20" id="loginform" #loginForm="ngForm" (ngSubmit)="login()">
+
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Enter User Name" [(ngModel)]="model.UserName" required
+              name="UserName" >
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Enter Password" [(ngModel)]="model.UserPassword" required
+              name="UserPassword">
+            </div>
+            <button type="submit" class="btn">Login</button>
+          </form>
+        </div>
+
+        <div class="forgot">
+          <a href="#">Forgot Password?</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+

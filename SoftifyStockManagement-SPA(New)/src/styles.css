@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/css/bootstrap/css/bootstrap.min.css";
+@import "assets/icon/themify-icons/themify-icons.css";
+@import "assets/css/style.css";
+@import "assets/css/theme-custom.css";
+@import "assets/css/jquery.mCustomScrollbar.css";
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import '~handsontable/dist/handsontable.full.css';
+
+
+/* <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> */
+/* @import "assets/icon/font-awesome/css/font-awesome.min.css";
+@import "assets/icon/icofont/css/icofont.css";
+@import "assets/css/style.css";
+@import "assets/css/jquery.mCustomScrollbar.css"; */
