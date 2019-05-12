@@ -10,7 +10,9 @@
 @import "../node_modules/primeng/resources/themes/nova-light/theme.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
 
+/*  PRIME NG STYLES */
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/primeng/resources/themes/nova-light/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
 
-/*<link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/themes/omega/theme.css" / >
-<link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/primeng.min.css" / >*/
 

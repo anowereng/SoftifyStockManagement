@@ -18,7 +18,7 @@
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label col-form-label text-right">UserName :</label>
                     <div class="col-sm-8">
-                      <input type="email" class="form-control" [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}"
+                      <input type="email" class="" pInputText [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}"
                             formControlName="username"
                             placeholder="username">
                       <div class="invalid-feedback">Please choose a User Name</div>

@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,600');
 
-body {
+/* body {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 600;
 	background: url("../../assets/images/login-img/mountains.jpg") no-repeat center center fixed;
 	background-size: cover;
-}
+} */
 .main-section {
 	margin: 0 auto;
 	margin-top: 130px;

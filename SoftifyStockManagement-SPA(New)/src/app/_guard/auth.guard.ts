@@ -15,10 +15,13 @@ export class AuthGuard implements CanActivate {
   canActivate(): boolean {
     if (this.logService.loggedIn()) {
       return true;
+    } else {
+      window.location.href = '/login';
+      return false;
     }
-    this.alertify.error('You shall not pass!!!');
-    this.router.navigate(['/login']);
-    return false;
+    // this.alertify.error('You shall not pass!!!');
+    // this.router.navigate(['/login']);
+    // return false;
 
   }
 }

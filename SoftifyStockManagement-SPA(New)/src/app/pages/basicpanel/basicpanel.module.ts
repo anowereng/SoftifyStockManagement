@@ -9,20 +9,26 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthGuard } from 'src/app/_guard/auth.guard';
 import { SupplierComponent } from './supplier/supplier.component';
 import { HotTableModule } from '@handsontable/angular';
-
+import { CategoryComponent } from './category/category.component';
+import { SubcategoryComponent } from './subcategory/subcategory.component';
+import { ErrorInterceptorProvider } from 'src/app/_services/error.interceptor';
+import { SharedModule, PanelModule } from 'primeng/primeng';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     BasicPanelRoutingModule,
-    HotTableModule.forRoot()
+    HotTableModule.forRoot(), PanelModule, DropdownModule
   ],
   declarations: [
    RegisterComponent,
    UserComponent,
-   SupplierComponent
+   SupplierComponent,
+   CategoryComponent,
+   SubcategoryComponent
   ],
-  providers: [LoginService, AlertifyService, AuthGuard]
+  providers: [LoginService, AlertifyService, AuthGuard, ErrorInterceptorProvider]
 })
 export class BasicPanelModule { }
