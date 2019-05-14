@@ -14,13 +14,14 @@ import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { ErrorInterceptorProvider } from 'src/app/_services/error.interceptor';
 import { SharedModule, PanelModule } from 'primeng/primeng';
 import {DropdownModule} from 'primeng/dropdown';
-
+import {InputTextModule} from 'primeng/inputtext';
+import { MessageModule } from 'primeng/primeng';
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     BasicPanelRoutingModule,
-    HotTableModule.forRoot(), PanelModule, DropdownModule
+    HotTableModule.forRoot(), PanelModule, DropdownModule,InputTextModule,MessageModule
   ],
   declarations: [
    RegisterComponent,

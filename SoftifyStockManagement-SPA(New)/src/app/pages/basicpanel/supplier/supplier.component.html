@@ -2,33 +2,29 @@
   <p-panel header="Validate">
       <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
           <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
-                  First Name *:
+              <div class="ui-grid-col-2 text-right font-weight-bold">
+                  First Name :
               </div>
               <div class="ui-grid-col-6">
-                  <input pInputText type="text" formControlName="firstname" placeholder="Required"/>
-              </div>
-              <div class="ui-grid-col-4">
-                  <div class="invalid-feedback" *ngIf="!userform.controls['firstname'].valid&&userform.controls['firstname'].dirty">
-                      Firstname is required
-                    </div>
-                  <!-- <p-message severity="error" text="Firstname is required" *ngIf="!userform.controls['firstname'].valid&&userform.controls['firstname'].dirty"></p-message> -->
+                  <input pInputText type="text" formControlName="firstname" placeholder="Required" class=""/>
+                  <div *ngIf="userform.get('firstname').errors && userform.get('firstname').touched" class="invalid-status">First Name is required</div>
+
               </div>
           </div>
           <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
-                  Last Name *:
+              <div class="ui-grid-col-2 text-right font-weight-bold">
+                  Last Name :
               </div>
               <div class="ui-grid-col-6">
-                  <input pInputText type="text" formControlName="lastname" placeholder="Required"/>
-              </div>
-              <div class="ui-grid-col-4">
-                  <!-- <p-message severity="error" text="Lastname is required" *ngIf="!userform.controls['lastname'].valid&&userform.controls['lastname'].dirty"></p-message> -->
-              </div>
+                  <input pInputText type="text" formControlName="lastname" placeholder="Required" [ngClass]="{'is-invalid': userform.get('lastname').errors && userform.get('lastname').touched}"/>
+
+                  <div *ngIf="userform.get('lastname').errors && userform.get('lastname').touched" class="invalid-status">Last Name is required</div>
+                </div>
+
           </div>
           <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
-                  Password *:
+              <div class="ui-grid-col-2 text-right font-weight-bold">
+                  Password :
               </div>
               <div class="ui-grid-col-6">
                   <input pInputText type="password" formControlName="password" placeholder="Required - Min(6)"/>
@@ -38,7 +34,7 @@
               </div> -->
           </div>
           <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+              <div class="ui-grid-col-2 text-right">
                   Description:
               </div>
               <div class="ui-grid-col-6">
@@ -60,7 +56,7 @@
           <div class="ui-grid-row">
               <div class="ui-grid-col-2"></div>
               <div class="ui-grid-col-6">
-                  <button pButton type="submit" label="Submit" [disabled]="!userform.valid"></button>
+                  <button pButton type="submit" label="Submit" [disabled]="!userform.valid">Submit</button>
               </div>
               <div class="ui-grid-col-4"></div>
           </div>
