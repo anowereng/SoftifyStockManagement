@@ -1,3 +1,7 @@
-/* #hot-display-license-info{
-  visibility: hidden;
-} */
+
+.invalid-status {
+  /* display: none; */
+  margin-top: .25rem;
+  font-size: .875rem;
+  color: #dc3545;
+}

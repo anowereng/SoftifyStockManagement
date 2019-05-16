@@ -1,71 +1,109 @@
-<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
-  <p-panel header="Validate">
-      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2 text-right font-weight-bold">
-                  First Name :
-              </div>
-              <div class="ui-grid-col-6">
-                  <input pInputText type="text" formControlName="firstname" placeholder="Required" class=""/>
-                  <div *ngIf="userform.get('firstname').errors && userform.get('firstname').touched" class="invalid-status">First Name is required</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <form [formGroup]="supplierform" (ngSubmit)="onSubmit(supplierform.value)">
+            <p-panel header="Supplier">
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-3 text-right font-weight-bold">
+                            Name :
+                        </div>
+                        <div class="ui-grid-col-8">
+                            <input pInputText type="text" formControlName="name" placeholder="Required"/>
+                            <div *ngIf="supplierform.get('name').errors && supplierform.get('name').touched" class="invalid-status">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-3 text-right font-weight-bold">
+                            Phone :
+                        </div>
+                        <div class="ui-grid-col-8">
+                            <input pInputText type="text" formControlName="phone" placeholder="Required"/>
+                            <div *ngIf="supplierform.get('phone').errors && supplierform.get('phone').touched" class="invalid-status">Phone Num is required</div>
+                        </div>
+                    </div>
 
-              </div>
-          </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2 text-right font-weight-bold">
-                  Last Name :
-              </div>
-              <div class="ui-grid-col-6">
-                  <input pInputText type="text" formControlName="lastname" placeholder="Required" [ngClass]="{'is-invalid': userform.get('lastname').errors && userform.get('lastname').touched}"/>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-3 text-right font-weight-bold">
+                            Rept.Name :
+                        </div>
+                        <div class="ui-grid-col-8">
+                            <input pInputText type="text" formControlName="reptname" placeholder="Required"/>
+                            <div *ngIf="supplierform.get('reptname').errors && supplierform.get('reptname').touched" class="invalid-status">Last Name is required</div>
+                          </div>
+                    </div>
 
-                  <div *ngIf="userform.get('lastname').errors && userform.get('lastname').touched" class="invalid-status">Last Name is required</div>
+                    <div class="ui-grid-row">
+                      <div class="ui-grid-col-3 text-right font-weight-bold">
+                          Rept.Phone :
+                      </div>
+                      <div class="ui-grid-col-8">
+                          <input pInputText type="text" formControlName="reptphone" placeholder="Required"/>
+                          <div *ngIf="supplierform.get('reptphone').errors && supplierform.get('reptphone').touched" class="invalid-status">Rept.Phone is required</div>
+                        </div>
+                  </div>
+
+                  <div class="ui-grid-row">
+                    <div class="ui-grid-col-3 text-right font-weight-bold">
+                        Location :
+                    </div>
+                    <div class="ui-grid-col-8">
+                        <p-dropdown [options]="locationList" formControlName="location"  [filter]="true" optionLabel="name"></p-dropdown>
+                        <div *ngIf="supplierform.get('location').errors && supplierform.get('location').touched" class="invalid-status">Location is required</div>
+                      </div>
                 </div>
 
-          </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2 text-right font-weight-bold">
-                  Password :
-              </div>
-              <div class="ui-grid-col-6">
-                  <input pInputText type="password" formControlName="password" placeholder="Required - Min(6)"/>
-              </div>
-              <!-- <div class="ui-grid-col-4">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-3 text-right font-weight-bold">
+                            Address:
+                        </div>
+                        <div class="ui-grid-col-8">
+                            <textarea pInputTextarea type="text" formControlName="address" ></textarea>
+                        </div>
 
-              </div> -->
-          </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2 text-right">
-                  Description:
-              </div>
-              <div class="ui-grid-col-6">
-                  <textarea pInputTextarea type="text" formControlName="description"></textarea>
-              </div>
-              <div class="ui-grid-col-4"></div>
-          </div>
-          <!-- <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
-                  Gender *:
-              </div>
-              <div class="ui-grid-col-6">
-                  <p-dropdown [options]="genders" formControlName="gender"></p-dropdown>
-              </div>
-              <div class="ui-grid-col-4">
-                  <p-message severity="error" text="Gender is required" *ngIf="!userform.controls['gender'].valid&&userform.controls['gender'].dirty"></p-message>
-              </div>
-          </div> -->
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2"></div>
-              <div class="ui-grid-col-6">
-                  <button pButton type="submit" label="Submit" [disabled]="!userform.valid">Submit</button>
-              </div>
-              <div class="ui-grid-col-4"></div>
-          </div>
-          <!-- <div style="text-align:center;margin-top:20px" *ngIf="submitted">
-              Form Submitted
-              <br>
-              {{diagnostic}}
-          </div> -->
-      </div>
-  </p-panel>
-</form>
+                    </div>
+                    <div class="ui-grid-row">
+                      <div class="ui-grid-col-3"></div>
+                      <div class="ui-grid-col-3">
+                          <button pButton type="submit" label="Submit" icon="pi pi-check" iconPos="left" [disabled]="!supplierform.valid"></button>
 
+                      </div>
+
+                      <div class="ui-grid-col-3"></div>
+                  </div>
+                  </div>
+            </p-panel>
+          </form>
+    </div>
+    <div class="col-md-6">
+        <p-panel header="">
+            <p-table #dt [value]="suppliers" [paginator]="true" [rows]="5"  [responsive]="true">
+                <ng-template pTemplate="caption">
+                    <div style="text-align: right">
+                        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                  <tr>
+                      <th *ngFor="let col of columns">
+                      {{col.header}}
+                  </th>
+
+                  </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-car>
+                  <tr>
+                      <td *ngFor="let col of cols">
+                        {{car[col.field]}}
+                      </td>
+
+                  </tr>
+              </ng-template>
+          </p-table>
+        </p-panel>
+    </div>
+
+  </div>
+</div>

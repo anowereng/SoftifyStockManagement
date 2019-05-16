@@ -1,27 +1,34 @@
+/* Common Module */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import {  BasicPanelRoutingModule } from './basic-panel-routing.module';
-import { RegisterComponent } from './register/register.component';
-import { UserComponent } from './user/user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+/* Service */
 import { LoginService } from 'src/app/_services/login.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthGuard } from 'src/app/_guard/auth.guard';
+/*  Prime NG Module   */
+import {  PanelModule, DataTableModule } from 'primeng/primeng';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {ButtonModule} from 'primeng/button';
+import { TableModule } from 'primeng/table';
+/* All Component here.. */
+import { RegisterComponent } from './register/register.component';
+import { UserComponent } from './user/user.component';
 import { SupplierComponent } from './supplier/supplier.component';
-import { HotTableModule } from '@handsontable/angular';
 import { CategoryComponent } from './category/category.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { ErrorInterceptorProvider } from 'src/app/_services/error.interceptor';
-import { SharedModule, PanelModule } from 'primeng/primeng';
-import {DropdownModule} from 'primeng/dropdown';
-import {InputTextModule} from 'primeng/inputtext';
-import { MessageModule } from 'primeng/primeng';
+
+
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     BasicPanelRoutingModule,
-    HotTableModule.forRoot(), PanelModule, DropdownModule,InputTextModule,MessageModule
+    PanelModule, DropdownModule, InputTextModule, InputTextareaModule, ButtonModule, TableModule, DataTableModule
   ],
   declarations: [
    RegisterComponent,

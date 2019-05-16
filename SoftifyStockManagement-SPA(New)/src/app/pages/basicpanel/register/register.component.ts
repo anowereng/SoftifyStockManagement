@@ -6,8 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { LoginService } from 'src/app/_services/login.service';
 import { User } from 'src/app/_models/Users';
-import * as Handsontable from 'handsontable';
-import {InputTextModule} from 'primeng/inputtext';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
