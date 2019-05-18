@@ -52,7 +52,25 @@ namespace SoftifyStockManagement.API.Controllers
                 return BadRequest();
             }
         }
+        [HttpPost("Test")]
+        public IActionResult Test([FromBody] Supplier model){
 
+                return Ok(model.address);
+        }
+        [HttpPost("SupplierSave")]
+        public IActionResult SupplierSave([FromBody] Supplier model)
+        {
+            SupplierQuery _lQuery = new SupplierQuery();
+            if (model!=null)
+            {
+                _lQuery.SupplierAdd(model);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
         [HttpPost("Login")]
         public IActionResult Login(User model)
         {
@@ -71,7 +89,7 @@ namespace SoftifyStockManagement.API.Controllers
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddMinutes(5),
+                Expires = DateTime.Now.AddMinutes(10),
                 SigningCredentials = creds
             };
 

@@ -1,0 +1,9 @@
+
+<form [formGroup]="supplierform" (ngSubmit)="SaveSupplier()">
+<!-- <p-dropdown [autoWidth]="false" [options]="options" formControlName="location" optionLabel="label"></p-dropdown> -->
+<!-- <p-dropdown [options]="cities2" formControlName="city" optionLabel="label"></p-dropdown> -->
+<p-dropdown [options]="cities2" formControlName="city"></p-dropdown>
+<button pButton type="submit" label="Submit" icon="pi pi-check" iconPos="left" ></button>
+
+
+</form>

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { JwtModule } from '@auth0/angular-jwt';
 /* components */
 
 import { HttpClientModule } from '@angular/common/http';
@@ -12,12 +13,24 @@ import { TopbarComponent } from './shared/topbar.component';
 import { SidebarComponent } from './shared/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
+
+export function tokenGetter( ) {
+  return localStorage.getItem('token');
+}
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule, HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+         tokenGetter: tokenGetter,
+         whitelistedDomains: ['localhost:5000'],
+         blacklistedRoutes: ['localhost:5000/api/login']
+      }
+   })
   ],
   declarations: [
     AppComponent, LoginComponent, TopbarComponent, SidebarComponent, DashboardComponent,

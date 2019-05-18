@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { CategoryComponent } from './category/category.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
+import { DemoComponent } from './demo/demo.component';
 
 
 const basicPanelRoutes: Routes = [
@@ -13,6 +14,7 @@ const basicPanelRoutes: Routes = [
 	{ path: 'supplier', component: SupplierComponent },
 	{ path: 'category', component: CategoryComponent },
 	{ path: 'subcategory', component: SubcategoryComponent },
+	{ path: 'demo', component: DemoComponent },
 ];
 
 @NgModule({

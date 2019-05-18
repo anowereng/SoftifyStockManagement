@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SoftifyStockManagement.API.SQL_Query;
 using SoftifyStockManagement.API.Models;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
+using SoftifyStockManagement.API.SQL_Query;
 namespace SoftifyStockManagement.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BasicSettingsController : ControllerBase
@@ -35,14 +43,15 @@ namespace SoftifyStockManagement.API.Controllers
                 return BadRequest();
         }
 
-
         [HttpPost("SupplierSave")]
         public IActionResult SupplierSave([FromBody] Supplier model)
         {
+       
             SupplierQuery _lQuery = new SupplierQuery();
-            if (ModelState.IsValid)
+            if (model!=null)
             {
-                _lQuery.SupplierAdd(model);
+                string message =_lQuery.SupplierAdd(model);
+                //if(message=="Success")
                 return Ok();
             }
             else
@@ -50,30 +59,42 @@ namespace SoftifyStockManagement.API.Controllers
                 return BadRequest();
             }
         }
+  
+        [HttpPost("Hello")]
+        public IActionResult SupplierHello([FromBody] Supplier model)
+        {
+            
+                return Ok(model);
 
+        }
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public IActionResult GetSupplierById(int id)
         {
-            return "value";
+            SupplierQuery _lQuery = new SupplierQuery();
+            if (ModelState.IsValid)
+            {
+                var model= _lQuery.GetSupplierById(id);
+                return Ok(model);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+       
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        // // PUT api/values/5
+        // [HttpPut("{id}")]
+        // public void Put(int id, [FromBody] string value)
+        // {
+        // }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        // // DELETE api/values/5
+        // [HttpDelete("{id}")]
+        // public void Delete(int id)
+        // {
+        // }
     }
 }

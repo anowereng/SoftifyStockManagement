@@ -21,6 +21,7 @@ import { SupplierComponent } from './supplier/supplier.component';
 import { CategoryComponent } from './category/category.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { ErrorInterceptorProvider } from 'src/app/_services/error.interceptor';
+import { DemoComponent } from './demo/demo.component';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { ErrorInterceptorProvider } from 'src/app/_services/error.interceptor';
    UserComponent,
    SupplierComponent,
    CategoryComponent,
-   SubcategoryComponent
+   SubcategoryComponent, DemoComponent
   ],
   providers: [LoginService, AlertifyService, AuthGuard, ErrorInterceptorProvider]
 })

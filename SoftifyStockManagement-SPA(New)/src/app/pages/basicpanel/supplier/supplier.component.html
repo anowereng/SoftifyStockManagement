@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-        <form [formGroup]="supplierform" (ngSubmit)="onSubmit(supplierform.value)">
+        <form [formGroup]="supplierform" (ngSubmit)="CreateSupplier()">
             <p-panel header="Supplier">
                 <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
                     <div class="ui-grid-row">
@@ -42,13 +42,21 @@
                           <div *ngIf="supplierform.get('reptphone').errors && supplierform.get('reptphone').touched" class="invalid-status">Rept.Phone is required</div>
                         </div>
                   </div>
-
+                  <!-- <p>Current date: {{location.value | date}}</p> -->
                   <div class="ui-grid-row">
                     <div class="ui-grid-col-3 text-right font-weight-bold">
                         Location :
                     </div>
                     <div class="ui-grid-col-8">
-                        <p-dropdown [options]="locationList" formControlName="location"  [filter]="true" optionLabel="name"></p-dropdown>
+                      <p-dropdown [options]="suppService.locationList" formControlName="location"></p-dropdown>
+                        <!-- <p-dropdown [options]="locationList" formControlName="location"  [filter]="true" optionLabel="label"></p-dropdown> -->
+                        <!-- <p-dropdown [autoWidth]="false" [options]="units" formControlName="location" ></p-dropdown> -->
+                        <!-- <p-dropdown [autoWidth]="false" [options]="units" formControlName="location" optionLabel="label"></p-dropdown> -->
+<!--
+<p-dropdown
+  [options]="locationList"
+  formControlName="location" optionLabel="label">
+</p-dropdown> -->
                         <div *ngIf="supplierform.get('location').errors && supplierform.get('location').touched" class="invalid-status">Location is required</div>
                       </div>
                 </div>
@@ -72,37 +80,45 @@
                       <div class="ui-grid-col-3"></div>
                   </div>
                   </div>
+
             </p-panel>
           </form>
     </div>
+
     <div class="col-md-6">
-        <p-panel header="">
-            <p-table #dt [value]="suppliers" [paginator]="true" [rows]="5"  [responsive]="true">
-                <ng-template pTemplate="caption">
-                    <div style="text-align: right">
-                        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-                    </div>
-                </ng-template>
-                <ng-template pTemplate="header" let-columns>
-                  <tr>
-                      <th *ngFor="let col of columns">
-                      {{col.header}}
-                  </th>
 
-                  </tr>
+
+        <p-table #dt [value]="suppService.list" [paginator]="true" [rows]="5" [resizableColumns]="true" [scrollable]="true"  scrollHeight="400px" [globalFilterFields]="['SupplierCode','SupplierName','ContactPhone']">
+            <ng-template pTemplate="caption">
+                <div style="text-align: right; overflow-x: hidden;">
+                 Search: <p class="wrapper"><input type="text" class="search-data" pInputText size="50" placeholder="Search Vendors" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto"></p>
+                </div>
               </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="col-name" style="width:20%">Code</th>
+                    <th class="col-unit" style="width:50%"> Name</th>
+                    <th class="col-qtd" style="width:30%">Phone</th>
+                    <th class="col-btns" style="width:30%"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item class="ui-resizable-column">
+                <tr>
+                    <td class="col-content-name" style="width:20%">{{item.SupplierCode }}</td>
+                    <td class="col-content-unit" style="width:50%">{{item.SupplierName}}</td>
+                    <td class="col-content-qtd"style="width:30%">{{item.ContactPhone}}</td>
+                    <td class="col-content-btns" style="width:30%">
+                        <p-button styleClass="ui-button-secondary" icon="pi pi-pencil" pTooltip="Edit Item" (onClick)="OnPopulateItem(item)" tooltipPosition="bottom"></p-button>
+                        <p-button styleClass="ui-button-secondary" icon="pi pi-trash" pTooltip="Delete Item" tooltipPosition="bottom" (onClick)="onDeleteItem(item)"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+               item not found
+            </ng-template>
+        </p-table>
 
-              <ng-template pTemplate="body" let-car>
-                  <tr>
-                      <td *ngFor="let col of cols">
-                        {{car[col.field]}}
-                      </td>
 
-                  </tr>
-              </ng-template>
-          </p-table>
-        </p-panel>
     </div>
 
   </div>

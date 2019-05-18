@@ -4,3 +4,18 @@
   font-size: .875rem;
   color: #dc3545;
 }
+.ui-datatable-reflow .ui-datatable-data > tr > td {
+  width: 100% !important;
+}@media ( max-width: 35em ) {
+  .ui-datatable-reflow .ui-datatable-data > tr > td {
+      text-align: left;
+      display: block;
+      border: 0 none;
+      width: 100% !important;  /*-- HERE --*/
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  clear: left;
+  }
+}

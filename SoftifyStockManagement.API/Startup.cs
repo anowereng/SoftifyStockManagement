@@ -30,15 +30,15 @@ namespace SoftifyStockManagement.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
             .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
-            //  services.AddCors(options =>
-            //{
-            //    options.AddPolicy("CorsPolicy",
-            //        builder => builder.AllowAnyOrigin()
-            //        .AllowAnyMethod()
-            //        .AllowAnyHeader()
-            //        .AllowCredentials());
-            //});
-            services.AddCors();
+              services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                   builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+  
             services.AddScoped<LoginQuery>();
             // Bearer Authentication
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -87,7 +87,6 @@ namespace SoftifyStockManagement.API
             }
             app.UseAuthentication();
             app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
-            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
