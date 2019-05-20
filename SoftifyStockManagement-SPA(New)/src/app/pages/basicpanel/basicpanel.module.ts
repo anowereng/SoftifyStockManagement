@@ -7,13 +7,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from 'src/app/_services/login.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthGuard } from 'src/app/_guard/auth.guard';
+
 /*  Prime NG Module   */
-import {  PanelModule, DataTableModule } from 'primeng/primeng';
+import {  PanelModule, DataTableModule, ConfirmationService } from 'primeng/primeng';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {ButtonModule} from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+
 /* All Component here.. */
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
@@ -29,7 +32,7 @@ import { DemoComponent } from './demo/demo.component';
     CommonModule,
     ReactiveFormsModule,
     BasicPanelRoutingModule,
-    PanelModule, DropdownModule, InputTextModule, InputTextareaModule, ButtonModule, TableModule, DataTableModule
+    PanelModule, DropdownModule, InputTextModule, InputTextareaModule, ButtonModule, TableModule, DataTableModule, ConfirmDialogModule
   ],
   declarations: [
    RegisterComponent,
@@ -38,6 +41,6 @@ import { DemoComponent } from './demo/demo.component';
    CategoryComponent,
    SubcategoryComponent, DemoComponent
   ],
-  providers: [LoginService, AlertifyService, AuthGuard, ErrorInterceptorProvider]
+  providers: [LoginService, AlertifyService, AuthGuard, ErrorInterceptorProvider, ConfirmationService]
 })
 export class BasicPanelModule { }

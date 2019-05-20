@@ -52,11 +52,7 @@ namespace SoftifyStockManagement.API.Controllers
                 return BadRequest();
             }
         }
-        [HttpPost("Test")]
-        public IActionResult Test([FromBody] Supplier model){
-
-                return Ok(model.address);
-        }
+     
         [HttpPost("SupplierSave")]
         public IActionResult SupplierSave([FromBody] Supplier model)
         {

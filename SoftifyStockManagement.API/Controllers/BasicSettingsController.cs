@@ -46,7 +46,6 @@ namespace SoftifyStockManagement.API.Controllers
         [HttpPost("SupplierSave")]
         public IActionResult SupplierSave([FromBody] Supplier model)
         {
-       
             SupplierQuery _lQuery = new SupplierQuery();
             if (model!=null)
             {
@@ -58,43 +57,40 @@ namespace SoftifyStockManagement.API.Controllers
             {
                 return BadRequest();
             }
+           
         }
-  
-        [HttpPost("Hello")]
-        public IActionResult SupplierHello([FromBody] Supplier model)
+         [HttpPut("SupplierUpdate/{id:int}")]
+        public IActionResult SupplierUpdate(int id, [FromBody] Supplier model)
         {
-            
-                return Ok(model);
 
-        }
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public IActionResult GetSupplierById(int id)
-        {
             SupplierQuery _lQuery = new SupplierQuery();
-            if (ModelState.IsValid)
+            if (model != null)
             {
-                var model= _lQuery.GetSupplierById(id);
-                return Ok(model);
+                string message = _lQuery.SupplierUpdate(model);
+                //if(message=="Success")
+                return Ok();
             }
             else
             {
                 return BadRequest();
             }
         }
-
-       
-
-        // // PUT api/values/5
-        // [HttpPut("{id}")]
-        // public void Put(int id, [FromBody] string value)
-        // {
-        // }
-
-        // // DELETE api/values/5
-        // [HttpDelete("{id}")]
-        // public void Delete(int id)
-        // {
-        // }
+   
+        // DELETE api/values/5
+        [HttpDelete("SupplierDelete/{id:int}")]
+        public IActionResult Delete(int id)
+        {
+           SupplierQuery _lQuery = new SupplierQuery();
+            if (id != null)
+            {
+                string message = _lQuery.SupplierDelete(id);
+                //if(message=="Success")
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }

@@ -30,7 +30,7 @@ export class SupplierService {
   }
 
   putItem(formData: Supplier) {
-    return this.http.put(this.rootURL + 'Employee/' + formData.SupplierId, formData);
+    return this.http.put(this.rootURL + 'SupplierUpdate/' + formData.SupplierId, formData);
    }
 
    getSupplierById(supplierId: string): Observable<Supplier> {
@@ -38,20 +38,12 @@ export class SupplierService {
   }
 
    deleteItem(id: number) {
-    return this.http.delete(this.rootURL + '/Employee/' + id);
+    return this.http.delete(this.rootURL + 'SupplierDelete/' + id);
    }
-
-  //  getCombo() {
-  //   this.http.get(this.rootURL + 'GetCombo')
-  //   .toPromise().then(res => this.locationList = res as SelectList[]);
-  // }
-  // getCombo(): Observable<SelectList[]> {
-  //   return this.http.get<SelectList[]>(this.rootURL + 'GetCombo');
-  // }
 
   getCombo() {
     this.locationList = [];
-    this.http.get('http://localhost:5000/api/BasicSettings/GetCombo').subscribe(response => {
+    this.http.get(this.rootURL + 'GetCombo').subscribe(response => {
       this.locationList = response as SelectComboTwo[];
       console.log(this.locationList);
     }, error => {

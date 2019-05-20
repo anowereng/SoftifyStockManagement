@@ -12,7 +12,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using SoftifyStockManagement.API.SQL_Query;
 using SoftifyStockManagement.API.Helpers;
-using SoftifyStockManagement.API.SQL_Query;
 
 namespace SoftifyStockManagement.API
 {

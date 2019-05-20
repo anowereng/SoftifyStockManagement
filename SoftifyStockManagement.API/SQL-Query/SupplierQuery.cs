@@ -42,11 +42,38 @@ namespace SoftifyStockManagement.API.SQL_Query
             var Query = "SELECT  cast(Isnull(MAX(SupplierId),0) + 1 AS float)  AS SupplierId FROM tblCat_Supplier";
             var NewId = CoreSQL.CoreSQL_GetDoubleData(Query);
 
-                var sqlQuery = "Insert Into tblCat_Supplier (SupplierId,SupplierCode, SupplierName, SupplierAddress, SupplierPhone, ContactName, ContactPhone, ContactEmail, SupplierLocation, ComId)" +
-                               " Values ('" + NewId + "','" + NewId + "','" + model.name + "','" + model.address + "','" + model.phone + "', '" + model.reptname + "','" + model.reptphone + "','','" + model.location + "',2)";
+                var sqlQuery = "Insert Into tblCat_Supplier (SupplierId,SupplierCode, SupplierName, SupplierAddress, SupplierPhone,  ContactPhone,ContactName, ContactEmail, SupplierLocation, ComId)" +
+                               " Values ('" + NewId + "','" + NewId + "','" + model.SupplierName + "','" + model.SupplierAddress + "','" + model.SupplierPhone + "', '" + model.ContactPhone + "','" + model.ContactName + "','','" + model.SupplierLocation + "',2)";
                 arrayList.Add(sqlQuery);
                 CoreSQL.CoreSQL_SaveDataUseSQLCommand(arrayList);
                 return "Success";
             }
+
+        public string SupplierUpdate(Supplier model)
+        {
+            CoreSQLConnection CoreSQL = new CoreSQLConnection();
+            ArrayList arrayList = new ArrayList();
+
+            var sqlQuery = "Update tblCat_Supplier set SupplierName = '" + model.SupplierName + "', SupplierAddress='" +
+                           model.SupplierAddress + "', SupplierPhone='" + model.SupplierPhone + "', ContactName='" + model.ContactName +
+                           "', ContactPhone='" + model.ContactPhone + "', ContactEmail='" + model.ContactEmail +
+                           "', SupplierLocation='" + model.SupplierLocation + "' where supplierid = '" + model.SupplierId + "'";
+                          
+            arrayList.Add(sqlQuery);
+            CoreSQL.CoreSQL_SaveDataUseSQLCommand(arrayList);
+            return "Success";
+        }
+
+        public string SupplierDelete(int Id)
+        {
+            CoreSQLConnection CoreSQL = new CoreSQLConnection();
+            ArrayList arrayList = new ArrayList();
+
+            var sqlQuery = "Delete tblCat_Supplier where  supplierid = '" + Id + "'";
+                          
+            arrayList.Add(sqlQuery);
+            CoreSQL.CoreSQL_SaveDataUseSQLCommand(arrayList);
+            return "Success";
+        }
     }
 }

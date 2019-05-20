@@ -7,14 +7,14 @@ namespace SoftifyStockManagement.API.Models
 {
     public class Supplier
     {
-        public  int id { get; set; }
-        public string name  { get; set; }
-        public string phone  { get; set; }
-        public string email  { get; set; }
-        public string address  { get; set; }
-        public string reptname  { get; set; }
-        public string reptphone  { get; set; }
-        public int location  { get; set; }
-
+        public  int   SupplierId { get; set; }
+        public string SupplierCode  { get; set; }
+        public string SupplierName  { get; set; }
+        public string SupplierPhone  { get; set; }
+        public string ContactEmail  { get; set; }
+        public string ContactName  { get; set; }
+        public string ContactPhone  { get; set; }
+        public string SupplierAddress  { get; set; }
+        public int SupplierLocation  { get; set; }
     }
 }
