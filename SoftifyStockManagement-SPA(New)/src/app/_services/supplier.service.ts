@@ -12,7 +12,6 @@ export class SupplierService {
   formData: Supplier;
   list: Supplier[];
   locationList: SelectComboTwo[];
-  suppliers: any;
   readonly rootURL = environment.apiUrl + 'BasicSettings/';
 
   constructor(private http: HttpClient) { }
@@ -24,7 +23,7 @@ export class SupplierService {
     return this.http.post(this.rootURL + 'Hello', model);
   }
   getDataList() {
-    this.http.get(this.rootURL + 'GetSupplier')
+    this.http.get(this.rootURL + 'GetSupplierList')
     .toPromise().then(res => this.list = res as Supplier[]);
     console.log(this.list);
   }
@@ -43,7 +42,7 @@ export class SupplierService {
 
   getCombo() {
     this.locationList = [];
-    this.http.get(this.rootURL + 'GetCombo').subscribe(response => {
+    this.http.get(this.rootURL + 'GetSupplierCombo').subscribe(response => {
       this.locationList = response as SelectComboTwo[];
       console.log(this.locationList);
     }, error => {

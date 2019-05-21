@@ -21,8 +21,73 @@ namespace SoftifyStockManagement.API.Controllers
     {
         // GET api/values
 
-        [HttpGet("GetSupplier")]
-        public IActionResult GetSupplier()
+        /* Unit : Start  */
+        [HttpGet("GetUnitList")]
+        public IActionResult GetUnitList()
+        {
+              UnitQuery _lQuery = new UnitQuery();
+            var list = _lQuery.GetUnit();
+            if (list != null)
+                return Ok(list);
+            else
+                return BadRequest();
+        }
+
+        [HttpPost("UnitSave")]
+        public IActionResult UnitSave([FromBody] Unit model)
+        {
+            UnitQuery _lQuery = new UnitQuery();
+            if (model!=null)
+            {
+                string message =_lQuery.UnitAdd(model);
+                //if(message=="Success")
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+           
+        }
+         [HttpPut("UnitUpdate/{id:int}")]
+        public IActionResult UnitUpdate(int id, [FromBody] Unit model)
+        {
+
+            UnitQuery _lQuery = new UnitQuery();
+            if (model != null)
+            {
+                string message = _lQuery.UnitUpdate(model);
+                //if(message=="Success")
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+   
+        // DELETE api/values/5
+        [HttpDelete("UnitDelete/{id:int}")]
+        public IActionResult UnitDelete(int id)
+        {
+           UnitQuery _lQuery = new UnitQuery();
+            if (id != null)
+            {
+                string message = _lQuery.UnitDelete(id);
+                //if(message=="Success")
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+
+
+    /* Supplier : Start  */
+        [HttpGet("GetSupplierList")]
+        public IActionResult GetSupplierList()
         {
             SupplierQuery _lQuery = new SupplierQuery();
             var list = _lQuery.GetSupplier();
@@ -32,8 +97,8 @@ namespace SoftifyStockManagement.API.Controllers
                 return BadRequest();
         }
 
-        [HttpGet("GetCombo")]
-        public IActionResult GetCombo()
+        [HttpGet("GetSupplierCombo")]
+        public IActionResult GetSupplierCombo()
         {
             SupplierQuery _lQuery = new SupplierQuery();
             var list = _lQuery.GetCombo();
@@ -78,7 +143,7 @@ namespace SoftifyStockManagement.API.Controllers
    
         // DELETE api/values/5
         [HttpDelete("SupplierDelete/{id:int}")]
-        public IActionResult Delete(int id)
+        public IActionResult SupplierDelete(int id)
         {
            SupplierQuery _lQuery = new SupplierQuery();
             if (id != null)

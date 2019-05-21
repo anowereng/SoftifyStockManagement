@@ -25,6 +25,8 @@ import { CategoryComponent } from './category/category.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { ErrorInterceptorProvider } from 'src/app/_services/error.interceptor';
 import { DemoComponent } from './demo/demo.component';
+import { UnitComponent } from './unit/unit.component';
+import { BinComponent } from './bin/bin.component';
 
 
 @NgModule({
@@ -39,7 +41,7 @@ import { DemoComponent } from './demo/demo.component';
    UserComponent,
    SupplierComponent,
    CategoryComponent,
-   SubcategoryComponent, DemoComponent
+   SubcategoryComponent, DemoComponent, UnitComponent, BinComponent
   ],
   providers: [LoginService, AlertifyService, AuthGuard, ErrorInterceptorProvider, ConfirmationService]
 })
