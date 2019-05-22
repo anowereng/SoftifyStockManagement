@@ -12,6 +12,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using SoftifyStockManagement.API.SQL_Query;
+
 namespace SoftifyStockManagement.API.Controllers
 {
     [Authorize]
@@ -74,6 +75,68 @@ namespace SoftifyStockManagement.API.Controllers
             if (id != null)
             {
                 string message = _lQuery.UnitDelete(id);
+                //if(message=="Success")
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        /* Bin : Start  */
+        [HttpGet("GetBinList")]
+        public IActionResult GetBinList()
+        {
+              BinQuery _lQuery = new BinQuery();
+            var list = _lQuery.GetBin();
+            if (list != null)
+                return Ok(list);
+            else
+                return BadRequest();
+        }
+
+        [HttpPost("BinSave")]
+        public IActionResult BinSave([FromBody] Bin model)
+        {
+            BinQuery _lQuery = new BinQuery();
+            if (model!=null)
+            {
+                string message =_lQuery.BinAdd(model);
+                //if(message=="Success")
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+           
+        }
+         [HttpPut("BinUpdate/{id:int}")]
+        public IActionResult BinUpdate(int id, [FromBody] Bin model)
+        {
+
+            BinQuery _lQuery = new BinQuery();
+            if (model != null)
+            {
+                string message = _lQuery.BinUpdate(model);
+                //if(message=="Success")
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+   
+        // DELETE api/values/5
+        [HttpDelete("BinDelete/{id:int}")]
+        public IActionResult BinDelete(int id)
+        {
+           BinQuery _lQuery = new BinQuery();
+            if (id != null)
+            {
+                string message = _lQuery.BinDelete(id);
                 //if(message=="Success")
                 return Ok();
             }

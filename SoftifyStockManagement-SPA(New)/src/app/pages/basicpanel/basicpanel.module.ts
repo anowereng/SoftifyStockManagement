@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from 'src/app/_services/login.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthGuard } from 'src/app/_guard/auth.guard';
-
+import { ErrorInterceptorProvider } from 'src/app/_services/error.interceptor';
 /*  Prime NG Module   */
 import {  PanelModule, DataTableModule, ConfirmationService } from 'primeng/primeng';
 import {DropdownModule} from 'primeng/dropdown';
@@ -23,7 +23,6 @@ import { UserComponent } from './user/user.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { CategoryComponent } from './category/category.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
-import { ErrorInterceptorProvider } from 'src/app/_services/error.interceptor';
 import { DemoComponent } from './demo/demo.component';
 import { UnitComponent } from './unit/unit.component';
 import { BinComponent } from './bin/bin.component';
