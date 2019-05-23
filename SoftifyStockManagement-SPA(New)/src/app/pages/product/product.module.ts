@@ -14,10 +14,12 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductRoutingModule } from './product-routing.module';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductListComponent
   ],
   imports: [
     CommonModule,

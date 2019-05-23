@@ -1,101 +1,49 @@
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-        <form [formGroup]="productEntryForm" (ngSubmit)="CreateProduct()">
-            <p-panel header="Prodcut">
-                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-12">
 
-                        <div class="ui-grid-col-4 font-weight-bold">
-                            <label class="control-label">   Supplier Qty : </label>
-                            <input pInputText type="text" formControlName="ProductName" placeholder="Required"/>
-                            <div *ngIf="productEntryForm.get('ProductName').errors && productEntryForm.get('ProductName').touched" class="invalid-status">First Name is required</div>
-                        </div>
-
-
-                    <div class="ui-grid-col-4 font-weight-bold">
-                        <label class="control-label">   Supplier Qty : </label>
-                      <p-dropdown [options]="prodService.supplierList" formControlName="ProductId" [filter]="true"></p-dropdown>
-                        <div *ngIf="productEntryForm.get('ProductId').errors && productEntryForm.get('ProductId').touched" class="invalid-status">Product is required</div>
-                      </div>
-
-                      <div class="ui-grid-col-4 font-weight-bold">
-                         <label class="control-label">   Op Qty : </label>
-                          <input pInputText type="text" formControlName="OPQty" placeholder="Required"/>
-                          <div *ngIf="productEntryForm.get('OPQty').errors && productEntryForm.get('OPQty').touched" class="invalid-status">Opening Qty is required</div>
-                      </div>
-
-
-                      <div class="ui-grid-col-4 font-weight-bold">
-                          <label class="control-label">   Op Qty : </label>
-                          <input pInputText type="text" formControlName="SellPrice" placeholder="Required"/>
-                          <div *ngIf="productEntryForm.get('SellPrice').errors && productEntryForm.get('SellPrice').touched" class="invalid-status">Sell Price is required</div>
-                      </div>
-
-                      <div class="ui-grid-col-4 font-weight-bold">
-                          <label class="control-label">   Op Qty : </label>
-                          <input pInputText type="text" formControlName="CostPrice" placeholder="Required"/>
-                          <div *ngIf="productEntryForm.get('CostPrice').errors && productEntryForm.get('CostPrice').touched" class="invalid-status">Cost Price is required</div>
-                      </div>
-
-
-
-                </div>
-              </div>
-
-                <div class="ui-grid-row">
-                    <div class="ui-grid-col-3"></div>
-                    <div class="ui-grid-col-3">
-                        <button pButton type="submit" label="Submit" icon="pi pi-check" iconPos="left" [disabled]="!productEntryForm.valid"></button>
-                    </div>
-
-                    <div class="ui-grid-col-3"></div>
-                </div>
-              </div>
-
-            </p-panel>
-          </form>
-    </div>
-  </div>
-</div> -->
 <form [formGroup]="productEntryForm" (ngSubmit)="CreateProduct()">
     <p-panel header="Product">
         <div class="ui-g ui-fluid">
             <div class="ui-g-12 ui-lg-12">
                 <div class="ui-g form-group">
-                  <div class="ui-g-12 ui-md-3">
-                      <label class="control-label">   Product Name : </label>
-                    <input pInputText type="text" formControlName="ProductName" placeholder="ProductName"/>
-                    <div *ngIf="productEntryForm.get('ProductName').errors && productEntryForm.get('ProductName').touched" class="invalid-status">First Name is required</div>
+                  <div class="ui-g-12 ui-md-3 ">
+                      <label class="control-label  font-weight-bold">   Product Name : </label>
+                    <input pInputText type="text"size="30" formControlName="ProductName" placeholder=""/>
+                    <div *ngIf="productEntryForm.get('ProductName').errors && productEntryForm.get('ProductName').touched" class="invalid-status ">First Name is required</div>
                   </div>
+
                   <div class="ui-g-12 ui-md-3">
-                      <label class="control-label">   Supplier : </label>
-                      <p-dropdown [options]="prodService.supplierList" formControlName="ProductId" [filter]="true"></p-dropdown>
+                      <label class="control-label font-weight-bold">  Supplier : </label>
+                      <p-dropdown [options]="prodService.supplierList" formControlName="SupplerId" [filter]="true"></p-dropdown>
                       <div *ngIf="productEntryForm.get('SupplerId').errors && productEntryForm.get('SupplerId').touched" class="invalid-status">Suppler Name is required</div>
                   </div>
+
                   <div class="ui-g-12 ui-md-3">
-                      <label class="control-label">   Unit : </label>
-                    <p-dropdown [options]="prodService.unitList" formControlName="ProductId" [filter]="true"></p-dropdown>
+                      <label class="control-label font-weight-bold">  Unit : </label>
+                    <p-dropdown [options]="prodService.unitList" formControlName="UnitId" [filter]="true"></p-dropdown>
                     <div *ngIf="productEntryForm.get('UnitId').errors && productEntryForm.get('UnitId').touched" class="invalid-status">Unit is required</div>
                   </div>
+
                   <div class="ui-g-12 ui-md-3">
-                    <label class="control-label">   Sell Price : </label>
-                    <input pInputText type="text" formControlName="SellPrice" placeholder="Sell Price"/>
+                    <label class="control-label font-weight-bold">  Sell Price : </label>
+                    <input pInputText type="text" formControlName="SellPrice" placeholder=""/>
                     <div *ngIf="productEntryForm.get('SellPrice').errors && productEntryForm.get('SellPrice').touched" class="invalid-status">Sell Price is required</div>
                   </div>
+
                   <div class="ui-g-12 ui-md-3">
-                    <label class="control-label">   Currency : </label>
-                    <input pInputText type="text" formControlName="Currency" placeholder="Currency"/>
+                    <label class="control-label font-weight-bold">   Currency : </label>
+                    <input pInputText type="text" formControlName="Currency" placeholder=""/>
                     <div *ngIf="productEntryForm.get('Currency').errors && productEntryForm.get('Currency').touched" class="invalid-status">Currency is required</div>
                   </div>
+
                   <div class="ui-g-12 ui-md-3">
-                      <label class="control-label">   Cost Price : </label>
-                      <input pInputText type="text" formControlName="CostPrice" placeholder="CostPrice"/>
+                      <label class="control-label font-weight-bold">   Cost Price : </label>
+                      <input pInputText type="text" formControlName="CostPrice" placeholder=""/>
                     <div *ngIf="productEntryForm.get('CostPrice').errors && productEntryForm.get('CostPrice').touched" class="invalid-status">Cost Price is required</div>
                   </div>
 
                 </div>
+                <div class="ui-g-12 ui-md-3">
+                    <button pButton type="submit" label="Submit" icon="pi pi-save" iconPos="left" [disabled]="!productEntryForm.valid"></button>
+                  </div>
               </div>
             </div>
 

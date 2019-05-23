@@ -25,19 +25,17 @@ export class ProductCreateComponent implements OnInit {
   ngOnInit() {
     this.prodService.getCombo();
     this.productEntryForm = this.fb.group({
-      ProductId: new FormControl(),
-      ProductName: new FormControl(),
+      ProductName: new FormControl('', Validators.required),
       SupplerId: new FormControl('', Validators.required),
-      OPQty: new FormControl('', Validators.required),
       SellPrice: new FormControl('', Validators.required),
       CostPrice: new FormControl('', Validators.required),
       Currency: new FormControl(''),
-      UnitId: new FormControl('', Validators.required),
+      UnitId: new FormControl(1, Validators.required),
     });
 }
 
 CreateProduct() {
-
+//  console.log(this.productEntryForm.value);
   this.products = Object.assign({}, this.productEntryForm.value);
   this.products.ProductId = 0;
   console.log(this.products);
@@ -45,7 +43,6 @@ CreateProduct() {
     this.prodService.postItem(this.products).subscribe(
       () => {
         this.alertify.success('Record saved Successfully');
-        this.prodService.getDataList();
         this.productEntryForm.reset();
       }, error => {
         console.log(error);

@@ -35,11 +35,11 @@ namespace SoftifyStockManagement.API.SQL_Query
             var NewId = CoreSQL.CoreSQL_GetDoubleData(Query);
 
                 var sqlQuery = "Insert Into tbl_Product ( SupplierId, ProductId, ProductName, OPQty, SellPrice, UnitId, CostPrice, Currency, Total, LUserId, ComId)" +
-                               " Values ('" + model.SupplierId + "','" + NewId + "','" + model.ProductName + "','" + model.OPQty + "','" + model.SellPrice + "', '" + model.UnitId + "','" + model.CostPrice + "','" + model.Currency + "','" + (model.SellPrice * model.CostPrice) + "','" + 2 + "',2)";
+                               " Values ('" + model.SupplierId + "','" + NewId + "','" + model.ProductName + "','" + 0 + "','" + model.SellPrice + "', '" + model.UnitId + "','" + model.CostPrice + "','" + model.Currency + "','" + (model.SellPrice * model.CostPrice) + "','" + 2 + "',2)";
                 arrayList.Add(sqlQuery);
                 CoreSQL.CoreSQL_SaveDataUseSQLCommand(arrayList);
                 return "Success";
-            }
+        }
 
         public string ProductUpdate(Product model)
         {

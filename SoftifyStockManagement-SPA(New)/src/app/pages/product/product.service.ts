@@ -23,7 +23,7 @@ export class ProductService {
   }
 
   getDataList() {
-    this.http.get(this.rootURL + 'GetProductList').subscribe(response => {
+    this.http.get(this.rootURL + 'GetProductData').subscribe(response => {
       this.list = response as Product[];
       console.log(this.list);
     }, error => {
@@ -31,7 +31,7 @@ export class ProductService {
     });
   }
   getCombo() {
-    this.http.get(this.rootURL + 'GetProductCombo').subscribe(response => {
+    this.http.get(this.rootURL + 'GetProductData').subscribe(response => {
       // this.supplierList = response[0] as SelectComboTwo[];
       this.supplierList  = response["Table1"] as SelectComboTwo[];
       this.unitList  = response["Table"] as SelectComboTwo[];

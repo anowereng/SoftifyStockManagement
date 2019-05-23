@@ -1,0 +1,39 @@
+
+    <div class="col-md-6">
+        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+          <p-table #dt [value]="suppService.list" [paginator]="true" [rows]="5" [resizableColumns]="true" [scrollable]="true"  scrollHeight="400px" [globalFilterFields]="['SupplierCode','SupplierName','ContactPhone']">
+              <ng-template pTemplate="caption">
+                  <div style="text-align: right; overflow-x: hidden;">
+                   Search: <p class="wrapper"><input type="text" class="search-data" pInputText size="50" placeholder="Search Vendors" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto"></p>
+                  </div>
+                </ng-template>
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th class="col-name" style="width:20%">Code</th>
+                      <th class="col-unit" style="width:50%"> Name</th>
+                      <th class="col-qtd" style="width:30%">Phone</th>
+                      <th class="col-btns" style="width:30%"></th>
+                  </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-item class="ui-resizable-column">
+                  <tr>
+                      <td class="col-content-name" style="width:20%">{{item.SupplierCode }}</td>
+                      <td class="col-content-unit" style="width:50%">{{item.SupplierName}}</td>
+                      <td class="col-content-qtd"style="width:30%">{{item.SupplierPhone}}</td>
+                      <td class="col-content-btns" style="width:30%">
+                          <p-button styleClass="ui-button-secondary" icon="pi pi-pencil" pTooltip="Edit Item" (onClick)="OnPopulateItem(item)" tooltipPosition="bottom"></p-button>
+
+                          <!-- <button type="text" (click)="confirm(item.SupplierId)" pButton icon="pi pi-check" label="Confirm"></button> -->
+                          <p-button styleClass="ui-button-secondary" icon="pi pi-trash" pTooltip="Delete Item" tooltipPosition="bottom" (click)="onDeleteItem(item.SupplierId)"></p-button>
+                      </td>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                 item not found
+              </ng-template>
+          </p-table>
+
+
+      </div>

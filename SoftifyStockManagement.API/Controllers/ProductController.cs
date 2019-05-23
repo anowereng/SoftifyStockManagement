@@ -21,8 +21,8 @@ namespace SoftifyStockManagement.API.Controllers
     public class ProductController : ControllerBase
     {
         // GET api/values
-        [HttpGet("GetProductCombo")]
-        public IActionResult GetProductCombo()
+        [HttpGet("GetProductData")]
+        public IActionResult GetProductData()
         {
             ProductQuery _lQuery = new ProductQuery();
             var list = _lQuery.GetProduct(0);
@@ -32,7 +32,7 @@ namespace SoftifyStockManagement.API.Controllers
                 return BadRequest();
         }
 
-        [HttpPost("UnitSave")]
+        [HttpPost("ProductSave")]
         public IActionResult ProductSave([FromBody]Product model)
         {
            ProductQuery _lQuery = new ProductQuery();
@@ -48,7 +48,7 @@ namespace SoftifyStockManagement.API.Controllers
             }
            
         }
-        [HttpPut("UnitUpdate/{id:int}")]
+        [HttpPut("ProductUpdate/{id:int}")]
         public IActionResult ProductUpdate(int id, [FromBody]Product model)
         {
 
