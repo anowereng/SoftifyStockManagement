@@ -21,11 +21,22 @@ namespace SoftifyStockManagement.API.Controllers
     public class ProductController : ControllerBase
     {
         // GET api/values
-        [HttpGet("GetProductData")]
-        public IActionResult GetProductData()
+        [HttpGet("GetProductData/{id:int}")]
+        public IActionResult GetProductData(int ProductId)
         {
             ProductQuery _lQuery = new ProductQuery();
-            var list = _lQuery.GetProduct(0);
+            var list = _lQuery.GetProduct(ProductId);
+            if (list != null)
+                return Ok(list);
+            else
+                return BadRequest();
+        }
+
+        [HttpGet("GetProductList")]
+        public IActionResult GetProductList()
+        {
+            ProductQuery _lQuery = new ProductQuery();
+            var list = _lQuery.GetProductList();
             if (list != null)
                 return Ok(list);
             else

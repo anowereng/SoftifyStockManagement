@@ -33,7 +33,7 @@ export function tokenGetter( ) {
    })
   ],
   declarations: [
-    AppComponent, LoginComponent, TopbarComponent, SidebarComponent, DashboardComponent,
+    AppComponent, LoginComponent, TopbarComponent, SidebarComponent, DashboardComponent
   ],
   providers: [ ErrorInterceptorProvider],
   bootstrap: [AppComponent]

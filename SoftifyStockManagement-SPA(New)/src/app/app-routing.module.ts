@@ -15,6 +15,7 @@ const appRoutes: Routes = [
       { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
       { path: 'basic', loadChildren: './pages/basicpanel/basicpanel.module#BasicPanelModule' },
       { path: 'product', loadChildren: './pages/product/product.module#ProductModule' },
+      { path: 'mr', loadChildren: './pages/mr/mr.module#MrModule' },
   ]
 }  ,
 { path: '**', redirectTo: 'login', pathMatch: 'full' }

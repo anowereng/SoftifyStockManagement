@@ -1,0 +1,65 @@
+
+<form [formGroup]="mrEntryForm" (ngSubmit)="CreateMr()">
+        <div class="form-row">
+
+          <div class="col-xs-12 col-12 col-md-4 form-group">
+            <label class="control-label">   Mr Date : </label>
+            <!-- <input type="text" class="form-control form-control-sm"  formControlName="dtMr" bsDatepicker> -->
+            <input type="text"
+            class="form-control form-control-sm"
+            bsDatepicker formControlName="dtMr">
+            <div *ngIf="mrEntryForm.get('dtMr').errors && mrEntryForm.get('dtMr').touched" class="invalid-status">MR Date  is required</div>
+          </div>
+
+          <div class="form-group col-md-4">
+              <label class="control-label">  Supplier : </label>
+            <input type="text" class="form-control form-control-sm"   formControlName="SupplierId">
+            <div *ngIf="mrEntryForm.get('SupplierId').errors && mrEntryForm.get('SupplierId').touched" class="invalid-status">Supplier Name is required</div>
+          </div>
+
+          <div class="form-group col-md-4">
+              <label class="control-label ">   Loading Date : </label>
+              <input type="text" class="form-control  form-control-sm"  formControlName="dtLoading">
+              <div *ngIf="mrEntryForm.get('dtLoading').errors && mrEntryForm.get('dtLoading').touched" class="invalid-status">Loading Date is required</div>
+            </div>
+            <div class="form-group col-md-8">
+                <label class="control-label ">   Loading Date : </label>
+                <textarea  type="" class="form-control  form-control-sm"  formControlName="dtLoading" rows="2" ></textarea>
+              </div>
+        </div>
+        <button type="button" class="btn btn-secondary" [disabled]="!mrEntryForm.valid">Submit</button>
+
+<!--
+  <p-panel header="Product">
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-lg-12">
+              <div class="ui-g form-group">
+                <div class="ui-g-12 ui-md-3 ">
+                    <label class="control-label  font-weight-bold">   Mr Date : </label>
+                  <input pInputText type="text"size="30" formControlName="dtMr" placeholder=""/>
+                  <div *ngIf="mrEntryForm.get('dtMr').errors && mrEntryForm.get('dtMr').touched" class="invalid-status ">MR date is required</div>
+
+                </div>
+
+                <div class="ui-g-12 ui-md-3">
+                    <label class="control-label font-weight-bold">  Supplier : </label>
+                    <p-dropdown [options]="prodService.supplierList" formControlName="SupplierId" [filter]="true"></p-dropdown>
+                    <div *ngIf="mrEntryForm.get('SupplierId').errors && mrEntryForm.get('SupplierId').touched" class="invalid-status">Suppler Name is required</div>
+                </div>
+
+
+                <div class="ui-g-12 ui-md-3">
+                  <label class="control-label font-weight-bold">  Loading Date : </label>
+                  <input pInputText type="text" formControlName="SellPrice" placeholder=""/>
+                  <div *ngIf="mrEntryForm.get('SellPrice').errors && mrEntryForm.get('SellPrice').touched" class="invalid-status">Sell Price is required</div>
+                </div>
+
+
+              <div class="ui-g-12 ui-md-3">
+                  <button pButton type="submit" label="Submit" icon="pi pi-save" iconPos="left" [disabled]="!mrEntryForm.valid"></button>
+                </div>
+            </div>
+          </div>
+        </div>
+      <p-panel> -->
+</form>

@@ -14,7 +14,7 @@ namespace SoftifyStockManagement.API.SQL_Query
         {
             CoreSQLConnection CoreSQL = new CoreSQLConnection();
             dsList = new DataSet();
-            string strQuery = "Exec [prcGet_Product] 0,0";
+            string strQuery = "Exec [prcGet_ProductList] 2";
             dsList = CoreSQL.CoreSQL_GetDataSet(strQuery);
             return clsCommon.JsonSerialize(dsList.Tables[0]);
         }

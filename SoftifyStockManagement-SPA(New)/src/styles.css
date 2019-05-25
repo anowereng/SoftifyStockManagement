@@ -12,7 +12,13 @@
 @import "../node_modules/primeng/resources/primeng.min.css";
 
 /*  Custom css here.. */
-@import "../src/assets/css/theme-custom.css"
+@import "../src/assets/css/theme-custom.css";
+@import 'ag-grid-community/dist/styles/ag-grid.css';
+@import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+
+/* ngx-bootstrap */
+@import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
+
 
 /* <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> */
 /* @import "assets/icon/font-awesome/css/font-awesome.min.css";

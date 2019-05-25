@@ -8,7 +8,7 @@ import { TableData } from 'src/app/_services/TableData';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class MrService {
   formData: Product;
   list: Product[];
   supplierList: SelectComboTwo[];
@@ -33,18 +33,12 @@ export class ProductService {
   }
   getCombo() {
     this.http.get(this.rootURL + 'GetProductData/0').subscribe(response => {
-      // this.supplierList = response[0] as SelectComboTwo[];
       this.supplierList  = response["Table1"] as SelectComboTwo[];
       this.unitList  = response["Table"] as SelectComboTwo[];
     }, error => {
       console.log(error);
     });
   }
-  // getCombo() {
-  //   this.http.get(this.rootURL + 'GetProductCombo')
-  //   .toPromise().then(res => this.supplierList = res as SelectComboTwo[]);
-  //   console.log(this.list);
-  // }
 
   putItem(formData: Product) {
     return this.http.put(this.rootURL + 'ProductUpdate/' + formData.ProductId, formData);
