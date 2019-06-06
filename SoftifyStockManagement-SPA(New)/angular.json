@@ -44,7 +44,8 @@
               "src/assets/js/vartical-demo.js",
 
               "src/assets/js/jquery.mCustomScrollbar.concat.min.js",
-              "node_modules/alertifyjs/build/alertify.min.js"
+              "node_modules/alertifyjs/build/alertify.min.js",
+              "node_modules/select2/dist/js/select2.min.js"
             ],
             "es5BrowserSupport": true
           },

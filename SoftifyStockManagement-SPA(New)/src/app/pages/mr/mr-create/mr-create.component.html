@@ -5,29 +5,30 @@
           <div class="col-xs-12 col-12 col-md-4 form-group">
             <label class="control-label">   Mr Date : </label>
             <!-- <input type="text" class="form-control form-control-sm"  formControlName="dtMr" bsDatepicker> -->
-            <input type="text"
-            class="form-control form-control-sm"
-            bsDatepicker formControlName="dtMr">
+            <input type="text" class="form-control form-control-sm" bsDatepicker formControlName="dtMr" [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }">
             <div *ngIf="mrEntryForm.get('dtMr').errors && mrEntryForm.get('dtMr').touched" class="invalid-status">MR Date  is required</div>
           </div>
 
           <div class="form-group col-md-4">
               <label class="control-label">  Supplier : </label>
-            <input type="text" class="form-control form-control-sm"   formControlName="SupplierId">
+            <!-- <input type="text" class="form-control form-control-sm"   formControlName="SupplierId"> -->
+
+
+              <select2 [data]="exampleData" class="form-control form-control-sm" ngDefaultControl  formControlName="SupplierId" style="background-color:aliceblue" (valueChanged)="changed($event)"></select2>
             <div *ngIf="mrEntryForm.get('SupplierId').errors && mrEntryForm.get('SupplierId').touched" class="invalid-status">Supplier Name is required</div>
           </div>
 
           <div class="form-group col-md-4">
               <label class="control-label ">   Loading Date : </label>
-              <input type="text" class="form-control  form-control-sm"  formControlName="dtLoading">
+              <input type="text" class="form-control  form-control-sm"  formControlName="dtLoading" bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }">
               <div *ngIf="mrEntryForm.get('dtLoading').errors && mrEntryForm.get('dtLoading').touched" class="invalid-status">Loading Date is required</div>
             </div>
             <div class="form-group col-md-8">
-                <label class="control-label ">   Loading Date : </label>
-                <textarea  type="" class="form-control  form-control-sm"  formControlName="dtLoading" rows="2" ></textarea>
+                <label class="control-label ">   Reamrks  : </label>
+                <textarea  type="" class="form-control  form-control-sm"  formControlName="Remarks" rows="2" ></textarea>
               </div>
         </div>
-        <button type="button" class="btn btn-secondary" [disabled]="!mrEntryForm.valid">Submit</button>
+        <button type="submit" class="btn btn-secondary" [disabled]="!mrEntryForm.valid">Submit</button>
 
 <!--
   <p-panel header="Product">

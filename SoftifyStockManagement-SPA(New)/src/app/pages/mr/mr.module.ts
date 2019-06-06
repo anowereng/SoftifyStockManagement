@@ -16,15 +16,17 @@ import { MrRoutingModule } from './mr-routing.module';
 import { MrCreateComponent } from './mr-create/mr-create.component';
 import { MrListComponent } from './mr-list/mr-list.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { Select2Module } from 'ng2-select2';
+import { MrEntryComponent } from './mr-entry/mr-entry.component';
 @NgModule({
   declarations: [
-    MrCreateComponent, MrListComponent
+    MrCreateComponent, MrListComponent, MrEntryComponent
   ],
   imports: [
     CommonModule,
     MrRoutingModule,
     BsDatepickerModule.forRoot(),
-    ReactiveFormsModule, AgGridModule.withComponents([]),
+    ReactiveFormsModule, AgGridModule.withComponents([]), Select2Module,
     PanelModule, DropdownModule, InputTextModule, InputTextareaModule, ButtonModule, TableModule, DataTableModule, ConfirmDialogModule
   ]
 })

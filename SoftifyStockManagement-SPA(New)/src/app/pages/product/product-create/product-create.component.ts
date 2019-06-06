@@ -5,7 +5,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { environment } from 'src/environments/environment';
 import { ConfirmationService} from 'primeng/api';
 import { Product } from 'src/app/_models/Products';
-import { ProductService } from '../product.service'
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-create',

@@ -17,7 +17,11 @@
 @import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
 /* ngx-bootstrap */
-@import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
+@import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
+
+/* Selct 2 Use */
+@import "../node_modules/select2/dist/css/select2.min.css";
+
 
 
 /* <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> */

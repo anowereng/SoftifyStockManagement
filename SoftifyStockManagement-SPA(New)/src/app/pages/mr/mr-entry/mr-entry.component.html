@@ -1,0 +1,101 @@
+
+
+<form [formGroup]="mrEntryForms" (ngSubmit)="CreateMr()">
+  <p-panel header="MR Entry">
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-lg-12">
+              <div class="ui-g form-group">
+                <div class="ui-g-12 ui-md-4 ">
+
+                    <label class="control-label  font-weight-bold">   MR Date : </label>
+                  <input pInputText type="text"size="30" formControlName="dtMr" placeholder="" bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }"/>
+                  <div *ngIf="mrEntryForms.get('dtMr').errors && mrEntryForms.get('dtMr').touched" class="invalid-status " >MR Date is required</div>
+                </div>
+
+                <div class="ui-g-12 ui-md-4">
+                    <label class="control-label font-weight-bold">  Supplier : </label>
+                    <p-dropdown [options]="mrService.supplierList" formControlName="SupplierId" [filter]="true"></p-dropdown>
+                    <div *ngIf="mrEntryForms.get('SupplierId').errors && mrEntryForms.get('SupplierId').touched" class="invalid-status">Suppler Name is required</div>
+                </div>
+
+                <div class="ui-g-12 ui-md-4">
+                    <label class="control-label font-weight-bold">  Loading Date : : </label>
+                  <input pInputText type="text"size="30" formControlName="dtLoading" placeholder="" bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }"/>
+                  <div *ngIf="mrEntryForms.get('dtLoading').errors && mrEntryForms.get('dtLoading').touched" class="invalid-status">Loading Date is required</div>
+                </div>
+
+                <div class="ui-g-12 ui-md-8">
+                  <label class="control-label font-weight-bold">  Reamrks : </label>
+                  <textarea ng-model="myTextarea" class="form-control" formControlName="Remarks"></textarea>
+                  <div *ngIf="mrEntryForms.get('Remarks').errors && mrEntryForms.get('Remarks').touched" class="invalid-status">Remarks  is required</div>
+                </div>
+
+              </div>
+     
+            </div>
+
+            <div class="ui-g-12 ui-md-3">
+                    <button pButton type="button" label="ADD" icon="pi pi-plus" iconPos="left" (click)="addItem()" [disabled]="mrEntryForms.get('items').invalid"></button>
+                </div>
+
+
+        <div class="ui-g-12 ui-lg-12">
+            <div formArrayName="items" class="table-responsive">
+                <table class="table table-sm table-bordered">
+                    <thead class="table-secondary" style="padding: 0">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mrEntryForms.get('items').controls; let i=index" [formGroupName]="i" scope="row">
+                              <td class="ui-p-8">
+                                <div style="width: auto;">
+                                    <!-- <p-dropdown [options]="mrService.supplierList" formControlName="ProductId" [filter]="true"></p-dropdown> -->
+                                    <select2 [data]="mrService.supplierCombo" class="form-control form-control-sm" ngDefaultControl  formControlName="ProductId"></select2> 
+                                </div>
+                                  <!-- <select2 [data]="mrService.supplierList" class="form-control form-control-sm" ngDefaultControl  formControlName="SupplierId" style="background-color:aliceblue" (valueChanged)="changed($event)"></select2> -->
+                                 
+                                <!-- <input type="text" class="form-control form-control-sm col-sm-12 col-md-12" formControlName="ProductId"> -->
+                              </td>
+                              <td>
+                                <input formControlName="UnitId" class="form-control form-control-sm"></td>
+                              <td>
+                                <input formControlName="Price"  class="form-control form-control-sm"></td>
+                                <td>
+                                    <input formControlName="Qty"  class="form-control form-control-sm"></td>
+                            </tr>
+
+                          </tbody>
+
+
+                  </table>
+                </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+              <button pButton type="submit" label="Submit" icon="pi pi-save" iconPos="left" [disabled]="!mrEntryForms.valid||mrEntryForms.get('items').invalid"></button>
+            </div>
+        </div>
+    
+          
+</p-panel>
+
+
+
+
+
+
+
+ <!-- <div formArrayName="items"
+  *ngFor="let item of mrEntryForms.get('items').controls; let i = index;">
+  <div [formGroupName]="i">
+    <input formControlName="name" placeholder="Item name">
+    <input formControlName="description" placeholder="Item description">
+    <input formControlName="price" placeholder="Item price">
+  </div>
+</div> -->
+
+</form>
