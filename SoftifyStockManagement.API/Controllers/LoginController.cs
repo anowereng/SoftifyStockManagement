@@ -59,7 +59,7 @@ namespace SoftifyStockManagement.API.Controllers
             SupplierQuery _lQuery = new SupplierQuery();
             if (model!=null)
             {
-                _lQuery.SupplierAdd(model);
+               _lQuery.SupplierAdd(model);
                 return Ok();
             }
             else

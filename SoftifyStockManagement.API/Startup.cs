@@ -85,8 +85,17 @@ namespace SoftifyStockManagement.API
                 //app.UseHsts();
             }
             app.UseAuthentication();
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
-            app.UseMvc();
+            // app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+            app.UseCors(X=>X.WithOrigins("http://localhost:4200").AllowAnyMethod()
+            .AllowAnyHeader().AllowCredentials());
+         
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseMvc(routes=>routes.MapSpaFallbackRoute(
+                name:"spa-fallback",
+                defaults: new {Controller="Fallback", action="Index"}
+            ));
+         
         }
     }
 }

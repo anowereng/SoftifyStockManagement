@@ -8,11 +8,11 @@ namespace SoftifyStockManagement.API.SQL_Query
     public class CustomerQuery
     {
         public static DataSet dsList = new DataSet();
-        public string GetCustomer()
+        public string GetCustomer(string searchdata)
         {
             CoreSQLConnection CoreSQL = new CoreSQLConnection();
             dsList = new DataSet();
-            string strQuery = "Exec prcGet_Customer 0 ";
+            string strQuery = "Exec prcGet_CustomerList "+ searchdata;
             dsList = CoreSQL.CoreSQL_GetDataSet(strQuery);
             return clsCommon.JsonSerialize(dsList.Tables[0]);
         }

@@ -14,7 +14,7 @@ namespace SoftifyStockManagement.API.SQL_Query
         {
             CoreSQLConnection CoreSQL = new CoreSQLConnection();
             dsList = new DataSet();
-            string strQuery = "Exec [prcGet_Supplier] 0,0,'' ";
+            string strQuery = "Exec [prcGet_Supplier] 0,0";
             dsList = CoreSQL.CoreSQL_GetDataSet(strQuery);
             return clsCommon.JsonSerialize(dsList.Tables[0]);
         }
@@ -22,7 +22,7 @@ namespace SoftifyStockManagement.API.SQL_Query
         {
             CoreSQLConnection CoreSQL = new CoreSQLConnection();
             dsList = new DataSet();
-            string strQuery = "Exec [prcGet_Supplier] 0,0,'' ";
+            string strQuery = "Exec [prcGet_Supplier] 0,0";
             dsList = CoreSQL.CoreSQL_GetDataSet(strQuery);
             return clsCommon.JsonSerialize(dsList.Tables[1]);
         }
@@ -31,23 +31,24 @@ namespace SoftifyStockManagement.API.SQL_Query
         {
             CoreSQLConnection CoreSQL = new CoreSQLConnection();
             dsList = new DataSet();
-            string strQuery = "Exec [prcGet_Supplier] 0,'"+supplierid+"','' ";
+            string strQuery = "Exec [prcGet_Supplier] 0,'"+supplierid+"' ";
             dsList = CoreSQL.CoreSQL_GetDataSet(strQuery);
             return clsCommon.JsonSerialize(dsList.Tables[0]);
         }
         public string SupplierAdd(Supplier model)
         {
-            CoreSQLConnection CoreSQL = new CoreSQLConnection();
-            ArrayList arrayList = new ArrayList();
-            var Query = "SELECT  cast(Isnull(MAX(SupplierId),0) + 1 AS float)  AS SupplierId FROM tblCat_Supplier";
-            var NewId = CoreSQL.CoreSQL_GetDoubleData(Query);
+        CoreSQLConnection CoreSQL = new CoreSQLConnection();
+                    ArrayList arrayList = new ArrayList();
+                    var Query = "SELECT  cast(Isnull(MAX(SupplierId),0) + 1 AS float)  AS SupplierId FROM tblCat_Supplier";
+                    var NewId = CoreSQL.CoreSQL_GetDoubleData(Query);
 
-                var sqlQuery = "Insert Into tblCat_Supplier (SupplierId,SupplierCode, SupplierName, SupplierAddress, SupplierPhone,  ContactPhone,ContactName, ContactEmail, SupplierLocation, ComId)" +
-                               " Values ('" + NewId + "','" + NewId + "','" + model.SupplierName + "','" + model.SupplierAddress + "','" + model.SupplierPhone + "', '" + model.ContactPhone + "','" + model.ContactName + "','','" + model.SupplierLocation + "',2)";
-                arrayList.Add(sqlQuery);
-                CoreSQL.CoreSQL_SaveDataUseSQLCommand(arrayList);
-                return "Success";
-            }
+                        var sqlQuery = "Insert Into tblCat_Supplier (SupplierId,SupplierCode, SupplierName, SupplierAddress, SupplierPhone,  ContactPhone,ContactName, ContactEmail, SupplierLocation, ComId)" +
+                                    " Values ('" + NewId + "','" + NewId + "','" + model.SupplierName + "','" + model.SupplierAddress + "','" + model.SupplierPhone + "', '" + model.ContactPhone + "','" + model.ContactName + "','','" + model.SupplierLocation + "',2)";
+                        arrayList.Add(sqlQuery);
+                        CoreSQL.CoreSQL_SaveDataUseSQLCommand(arrayList);
+                        return "Success";
+            }  
+            
 
         public string SupplierUpdate(Supplier model)
         {

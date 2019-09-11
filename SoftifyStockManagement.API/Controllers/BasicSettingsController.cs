@@ -15,6 +15,7 @@ using SoftifyStockManagement.API.SQL_Query;
 
 namespace SoftifyStockManagement.API.Controllers
 {
+    // [AllowAnonymous]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
