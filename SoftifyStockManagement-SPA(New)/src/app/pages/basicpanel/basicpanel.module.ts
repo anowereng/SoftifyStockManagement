@@ -26,6 +26,7 @@ import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { DemoComponent } from './demo/demo.component';
 import { UnitComponent } from './unit/unit.component';
 import { BinComponent } from './bin/bin.component';
+import { BasicPanelComponent } from './basic-panel.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { BinComponent } from './bin/bin.component';
    UserComponent,
    SupplierComponent,
    CategoryComponent,
+   BasicPanelComponent,
    SubcategoryComponent, DemoComponent, UnitComponent, BinComponent
   ],
   providers: [LoginService, AlertifyService, AuthGuard, ErrorInterceptorProvider, ConfirmationService]

@@ -8,14 +8,16 @@ export class ErrorInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(
             catchError(error => {
+                console.log(error);
                 if (error instanceof HttpErrorResponse) {
                     if (error.status === 401) {
-                        console.log(error.statusText);
-                        return throwError(error.statusText);
+                        // console.log(error.statusText);
+                        return throwError(error.statusText+" | "+error.error);
                     }
+
                     const applicationError = error.headers.get('Application-Error');
                     if (applicationError) {
-                        console.error(applicationError);
+                        // console.error(applicationError);
                         return throwError(applicationError);
                     }
                     const serverError = error.error;
@@ -27,7 +29,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                             }
                         }
                     }
-                    return throwError(modalStateErrors || serverError || 'Server Error');
+                    return throwError(error.message);
                 }
             })
         );

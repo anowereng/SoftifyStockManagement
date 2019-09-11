@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SelectList } from './selectlist';
 import { SelectComboTwo } from './SelectComboTwo';
+import { AlertifyService } from 'src/app/_services/alertify.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +15,7 @@ export class SupplierService {
   locationList: SelectComboTwo[];
   readonly rootURL = environment.apiUrl + 'BasicSettings/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private alertifymsg: AlertifyService) { }
 
   postItem(model: any) {
    return this.http.post(this.rootURL + 'SupplierSave', model );
@@ -46,6 +47,7 @@ export class SupplierService {
       this.locationList = response as SelectComboTwo[];
       console.log(this.locationList);
     }, error => {
+      this.alertifymsg.error(error);
       console.log(error);
     });
   }

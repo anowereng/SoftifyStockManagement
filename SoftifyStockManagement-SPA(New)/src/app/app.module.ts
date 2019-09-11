@@ -13,6 +13,7 @@ import { TopbarComponent } from './shared/topbar.component';
 import { SidebarComponent } from './shared/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { FooterComponent } from './shared/footer.component';
 
 export function tokenGetter( ) {
   return localStorage.getItem('token');
@@ -33,7 +34,7 @@ export function tokenGetter( ) {
    })
   ],
   declarations: [
-    AppComponent, LoginComponent, TopbarComponent, SidebarComponent, DashboardComponent
+    AppComponent, LoginComponent, TopbarComponent, SidebarComponent, DashboardComponent,FooterComponent
   ],
   providers: [ ErrorInterceptorProvider],
   bootstrap: [AppComponent]

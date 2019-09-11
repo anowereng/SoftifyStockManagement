@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.model).subscribe(next => {
       this.alertifymsg.success('Logged in successfully');
     }, error => {
+      console.log(error)
         this.alertifymsg.error(error);
     }, () => {
       this.router.navigate(['pages/dashboard']);

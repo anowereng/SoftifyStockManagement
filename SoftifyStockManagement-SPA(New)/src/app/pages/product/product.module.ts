@@ -16,17 +16,22 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { CustomcellComponent } from './product-list/customcell/customcell.component';
+import { ButtonRendererComponent } from '../../_template/button-RendererComponent';
+import { Select2Module } from 'ng2-select2';
 @NgModule({
   declarations: [
     ProductCreateComponent,
-    ProductListComponent
+    ProductListComponent,
+    CustomcellComponent,
+    ButtonRendererComponent
   ],
   imports: [
     CommonModule,
     ProductRoutingModule,
-    ReactiveFormsModule, AgGridModule.withComponents([]),
+    ReactiveFormsModule, AgGridModule.withComponents([ButtonRendererComponent]), Select2Module,
     PanelModule, DropdownModule, InputTextModule, InputTextareaModule, ButtonModule, TableModule, DataTableModule, ConfirmDialogModule
   ],
-  providers: [ConfirmationService]
+  providers: [ConfirmationService], entryComponents: [ButtonRendererComponent]
 })
 export class ProductModule { }

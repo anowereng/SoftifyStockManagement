@@ -51,7 +51,7 @@
                       </tr>
                     </thead>
                         <tbody>
-                            <tr *ngFor="let item of mrEntryForms.get('items').controls; let i=index" [formGroupName]="i" scope="row">
+                            <tr *ngFor="let item of mrEntryForms.get('items'); let i=index" [formGroupName]="i" scope="row">
                               <td class="ui-p-8">
                                 <div style="width: auto;">
                                     <!-- <p-dropdown [options]="mrService.supplierList" formControlName="ProductId" [filter]="true"></p-dropdown> -->

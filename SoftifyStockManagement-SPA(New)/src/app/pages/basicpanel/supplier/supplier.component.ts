@@ -26,7 +26,6 @@ export class SupplierComponent implements OnInit {
     this.suppService.getCombo();
     this.suppService.getDataList();
     this.supplierform = this.fb.group({
-       SupplierId: new FormControl(),
       SupplierCode: new FormControl(),
       SupplierName: new FormControl('', Validators.required),
       ContactName: new FormControl('', Validators.required),
@@ -75,15 +74,17 @@ CreateSupplier() {
 }
 
 OnPopulateItem(model: Supplier) {
+  console.log(model)
    this.dataSaved = false;
    this.supplierIdUpdate = model.SupplierId;
-   this.supplierform.setValue(model);
-  //  this.supplierform.controls.SupplierName.setValue(model.SupplierName);
-  //  this.supplierform.controls.SupplierPhone.setValue(model.SupplierPhone);
-  //  this.supplierform.controls.ContactName.setValue(model.ContactName);
-  //  this.supplierform.controls.ContactPhone.setValue(model.ContactPhone);
-  //  this.supplierform.controls.SupplierAddress.setValue(model.SupplierAddress);
-  //  this.supplierform.controls.SupplierLocation.setValue(model.SupplierLocation);
+    // this.supplierform.setValue(model);
+   this.supplierform.controls.SupplierName.setValue(model.SupplierName);
+   this.supplierform.controls.SupplierPhone.setValue(model.SupplierPhone);
+   this.supplierform.controls.ContactName.setValue(model.ContactName);
+   this.supplierform.controls.ContactPhone.setValue(model.ContactPhone);
+   this.supplierform.controls.SupplierAddress.setValue(model.SupplierAddress);
+   this.supplierform.controls.SupplierLocation.setValue(model.SupplierLocation);
+   this.supplierform.controls.SupplierId.setValue(model.SupplierId);
 }
 
 
