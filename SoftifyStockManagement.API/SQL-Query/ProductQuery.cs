@@ -10,6 +10,7 @@ namespace SoftifyStockManagement.API.SQL_Query
     public class ProductQuery
     {
         public static DataSet dsList = new DataSet();
+        public static int ComId = 2;
         public string GetProductList()
         {
             CoreSQLConnection CoreSQL = new CoreSQLConnection();
@@ -34,8 +35,8 @@ namespace SoftifyStockManagement.API.SQL_Query
             var Query = "SELECT  cast(Isnull(MAX(ProductId),0) + 1 AS float)  AS ProductId FROM tbl_Product";
             var NewId = CoreSQL.CoreSQL_GetDoubleData(Query);
 
-                var sqlQuery = "Insert Into tbl_Product ( SupplierId, ProductId, ProductName, OPQty, SellPrice, UnitId, CostPrice, Currency, Total, LUserId, ComId)" +
-                               " Values ('" + model.SupplierId + "','" + NewId + "','" + model.ProductName + "','" + 0 + "','" + model.SellPrice + "', '" + model.UnitId + "','" + model.CostPrice + "','" + model.Currency + "','" + (model.SellPrice * model.CostPrice) + "','" + 2 + "',2)";
+                var sqlQuery = "Insert Into tbl_Product ( SupplierId, ProductId, ProductName, OPQty, SellPrice, UnitId, CostPrice, Currency, Total, LUserId, ComId, Weight, ROL , BrandId)" +
+                               " Values ('" + model.SupplierId + "','" + NewId + "','" + model.ProductName + "','" + 0 + "','" + model.SellPrice + "', '" + model.UnitId + "','" + model.CostPrice + "','" + model.Currency + "','" + (model.SellPrice * model.CostPrice) + "','" + 2 + "','"+ComId+ "', '"+model.Weight+ "', '" + model.ROL + "','" + model.BrandId + "')";
                 arrayList.Add(sqlQuery);
                 CoreSQL.CoreSQL_SaveDataUseSQLCommand(arrayList);
                 return "Success";

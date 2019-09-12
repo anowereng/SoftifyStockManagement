@@ -9,12 +9,13 @@ namespace SoftifyStockManagement.API.SQL_Query
 {
     public class UnitQuery
     {
+        public static int ComId=2;
         public static DataSet dsList = new DataSet();
         public string GetUnit()
         {
             CoreSQLConnection CoreSQL = new CoreSQLConnection();
             dsList = new DataSet();
-            string strQuery = "Exec [prcGet_Unit] 0 ";
+            string strQuery = "Exec [prcGetUnit] '"+ ComId + "', 0 ";
             dsList = CoreSQL.CoreSQL_GetDataSet(strQuery);
             return clsCommon.JsonSerialize(dsList.Tables[0]);
         }
@@ -27,7 +28,7 @@ namespace SoftifyStockManagement.API.SQL_Query
             var NewId = CoreSQL.CoreSQL_GetDoubleData(Query);
 
                 var sqlQuery = "Insert Into tblUnit (UnitId, UnitName, ComId)" +
-                               " Values ('" + NewId + "','" + model.UnitName + "',2)";
+                               " Values ('" + NewId + "','" + model.UnitName + "','"+ ComId + "')";
                 arrayList.Add(sqlQuery);
                 CoreSQL.CoreSQL_SaveDataUseSQLCommand(arrayList);
                 return "Success";
