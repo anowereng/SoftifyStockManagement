@@ -13,7 +13,7 @@ export class MrService {
   list: Product[];
   supplierList: SelectComboTwo[];
   brandCombo: SelectComboTwo[];
-  unitList: SelectComboTwo[];
+  unitCombo: SelectComboTwo[];
   tableData: TableData[];
   rowData: any;
   readonly rootURL = environment.apiUrl + 'Product/';
@@ -37,6 +37,7 @@ export class MrService {
       // this.unitList  = response["Table"] as SelectComboTwo[];
       this.supplierCombo  = response["Table2"] as SelectComboTwo[];
       this.brandCombo = response["Table1"] as SelectComboTwo[];
+      this.unitCombo = response["Table"] as SelectComboTwo[];
       
       console.log(response);
     }, error => {
