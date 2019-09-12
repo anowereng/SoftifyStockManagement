@@ -12,9 +12,10 @@ import { ComboTwo } from '../../_services/ComboTwo';
 export class ProductService {
   formData: Product;
   list: Product[];
-  supplierList: SelectComboTwo[];
-  unitList: SelectComboTwo[];
-  unitCombo: ComboTwo[];
+  // supplierList: SelectComboTwo[];
+  // unitList: SelectComboTwo[];
+  unitCombo: SelectComboTwo[];
+  brandCombo: SelectComboTwo[];
   tableData: TableData[];
   rowData: any;
   readonly rootURL = environment.apiUrl + 'Product/';
@@ -36,10 +37,12 @@ export class ProductService {
   getCombo() {
     this.http.get(this.rootURL + 'GetProductData/0').subscribe(response => {
       // this.supplierList = response[0] as SelectComboTwo[];
-      this.supplierList  = response["Table1"] as SelectComboTwo[];
-      this.supplierList = response["Table1"] as SelectComboTwo[];
-      this.supplierCombo = response["Table1"] as ComboTwo[];
-      this.unitCombo = response["Table"] as ComboTwo[];
+      // this.supplierList  = response["Table1"] as SelectComboTwo[];
+      // this.supplierList = response["Table1"] as SelectComboTwo[];
+      // this.supplierCombo = response["Table1"] as ComboTwo[];
+      this.unitCombo = response["Table"] as SelectComboTwo[];
+      this.brandCombo = response["Table1"] as SelectComboTwo[];
+      console.log(response);
     }, error => {
       console.log(error);
     });

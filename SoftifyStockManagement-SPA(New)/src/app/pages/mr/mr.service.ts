@@ -5,8 +5,6 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { Product } from 'src/app/_models/Products';
 import { SelectComboTwo } from 'src/app/_services/SelectComboTwo';
 import { TableData } from 'src/app/_services/TableData';
-import { Select2OptionData } from 'ng2-select2';
-import { ComboTwo } from 'src/app/_services/ComboTwo';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +12,12 @@ export class MrService {
   formData: Product;
   list: Product[];
   supplierList: SelectComboTwo[];
+  brandCombo: SelectComboTwo[];
   unitList: SelectComboTwo[];
   tableData: TableData[];
   rowData: any;
   readonly rootURL = environment.apiUrl + 'Product/';
-  supplierCombo: ComboTwo[];
+  supplierCombo: SelectComboTwo[];
   constructor(private http: HttpClient, private alertify: AlertifyService) { }
 
   postItem(model: any) {
@@ -34,10 +33,12 @@ export class MrService {
   }
   getCombo() {
     this.http.get(this.rootURL + 'GetProductData/0').subscribe(response => {
-      this.supplierList  = response["Table1"] as SelectComboTwo[];
-      this.unitList  = response["Table"] as SelectComboTwo[];
-      this.supplierCombo  = response["Table3"] as ComboTwo[];
-      console.log(this.supplierCombo);
+      // this.supplierList  = response["Table"] as SelectComboTwo[];
+      // this.unitList  = response["Table"] as SelectComboTwo[];
+      this.supplierCombo  = response["Table2"] as SelectComboTwo[];
+      this.brandCombo = response["Table1"] as SelectComboTwo[];
+      
+      console.log(response);
     }, error => {
       console.log(error);
     });

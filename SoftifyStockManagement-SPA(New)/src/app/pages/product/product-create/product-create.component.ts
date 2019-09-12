@@ -26,11 +26,13 @@ export class ProductCreateComponent implements OnInit {
     this.prodService.getCombo();
     this.productEntryForm = this.fb.group({
       ProductName: new FormControl('', Validators.required),
-      SupplierId: new FormControl('', Validators.required),
+      BrandId: new FormControl('', Validators.required),
       SellPrice: new FormControl('', Validators.required),
       CostPrice: new FormControl('', Validators.required),
       Currency: new FormControl(''),
       UnitId: new FormControl(1, Validators.required),
+      Weight:  new FormControl('', Validators.required),
+      ROL: new FormControl('', Validators.required),
     });
 }
 
@@ -38,6 +40,7 @@ CreateProduct() {
 //  console.log(this.productEntryForm.value);
   this.products = Object.assign({}, this.productEntryForm.value);
   this.products.ProductId = 0;
+  console.log(this.products );
   if (this.productEntryForm.valid) {
     this.prodService.postItem(this.products).subscribe(
       () => {

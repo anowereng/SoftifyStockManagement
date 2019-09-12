@@ -21,6 +21,7 @@ export class MrCreateComponent implements OnInit {
       dtMr: new FormControl('', Validators.required),
       SupplierId: new FormControl('3', Validators.required),
       dtLoading: new FormControl('', Validators.required),
+      BinId: new FormControl('', Validators.required),
       Remarks: new FormControl('')
     });
 

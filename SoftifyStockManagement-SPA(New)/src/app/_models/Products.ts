@@ -6,4 +6,7 @@ export interface Product {
   SellPrice: number;
   UnitId: number;
   Currency: string;
+  BrandId: string;
+  Weight: string;
+  ROL: string;
 }

@@ -1,65 +1,15 @@
 <div class="page-body">
   <div class="card">
 
-    <div class="card-header bg-secondary">
-      <h5 class="card-title text-white">Product List</h5>
-      <button type="button" class="btn btn-sm btn-outline-dark float-right">Add New</button>
+    <div class="card-header">
+      <h5 class="card-title">Product List</h5>
+      <button type="button" class="btn btn-sm btn-outline-primary float-right">Add New</button>
     </div>
 
     <div class="card-body">
       <div class="row">
-        <div class="col-md-4">
-          <form [formGroup]="productEntryForm" (ngSubmit)="CreateProduct()">
-
-            <div class="form-group">
-
-              <div class="col-md-12">
-                <label class="control-label  font-weight-bold">   Product Name : </label>
-                <input type="text" formControlName="ProductName" placeholder="" />
-                <div *ngIf="productEntryForm.get('ProductName').errors && productEntryForm.get('ProductName').touched" class="invalid-status ">First Name is required</div>
-              </div>
-
-              <div class="col-md-12">
-                <label class="control-label font-weight-bold">  Supplier : </label>
-                <select2 [data]="prodService.supplierCombo" class="form-control form-control-sm" ngDefaultControl formControlName="SupplierId"></select2>
-                <div *ngIf="productEntryForm.get('SupplierId').errors && productEntryForm.get('SupplierId').touched" class="invalid-status">Suppler Name is required</div>
-              </div>
-
-              <div class="col-md-12">
-                <label class="control-label font-weight-bold">  Unit : </label>
-                <select2 [data]="prodService.unitCombo" class="form-control form-control-sm" ngDefaultControl formControlName="UnitId"></select2>
-                <div *ngIf="productEntryForm.get('UnitId').errors && productEntryForm.get('UnitId').touched" class="invalid-status">Unit is required</div>
-              </div>
-
-              <div class="col-md-12">
-                <label class="control-label font-weight-bold">  Sell Price : </label>
-                <input type="text" formControlName="SellPrice" placeholder="" />
-                <div *ngIf="productEntryForm.get('SellPrice').errors && productEntryForm.get('SellPrice').touched" class="invalid-status">Sell Price is required</div>
-              </div>
-
-              <div class="col-md-12">
-                <label class="control-label font-weight-bold">   Currency : </label>
-                <input type="text" formControlName="Currency" placeholder="" />
-                <div *ngIf="productEntryForm.get('Currency').errors && productEntryForm.get('Currency').touched" class="invalid-status">Currency is required</div>
-              </div>
-
-              <div class="col-md-12">
-                <label class="control-label font-weight-bold">   Cost Price : </label>
-                <input type="text" formControlName="CostPrice" placeholder="" />
-                <div *ngIf="productEntryForm.get('CostPrice').errors && productEntryForm.get('CostPrice').touched" class="invalid-status">Cost Price is required</div>
-              </div>
-
-              <div class="col-md-12">
-                <button type="submit" label="Submit" [disabled]="!productEntryForm.valid">Submit</button>
-              </div>
-
-            </div>
-
-
-          </form>
-        </div>
-        <div class="col-md-8">
-          <ag-grid-angular style="width: 500px; height: 500px;"
+        <div class="col-md-10">
+          <ag-grid-angular style="width: 900px; height: 500px;"
                            class="ag-theme-balham"
                            [rowData]="prodService.rowData"
                            [columnDefs]="column"
@@ -70,6 +20,7 @@
                            [pagination]="true"
                            [paginationPageSize]="10"
                            [frameworkComponents]="frameworkComponents"
+                           (click)=onBtnClick1($event)
                            (gridReady)="OnGridReady($event)">
           </ag-grid-angular>
         </div>
@@ -83,8 +34,8 @@
           <input type="button" (click)="clear()" value="Clear" class="col-md-12" />
         </div>
       </div>-->
-      <h4>Row data from button 1: </h4>
-      <pre>{{rowDataClicked1 | json}}</pre>
+      <!-- <h4>Row data from button 1: </h4>
+      <pre>{{rowDataClicked1 | json}}</pre> -->
     </div>
   </div>
 </div>

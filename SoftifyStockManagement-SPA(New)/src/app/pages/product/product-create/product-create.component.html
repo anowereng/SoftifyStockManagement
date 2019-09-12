@@ -7,18 +7,18 @@
                   <div class="ui-g-12 ui-md-3 ">
                       <label class="control-label  font-weight-bold">   Product Name : </label>
                     <input pInputText type="text"size="30" formControlName="ProductName" placeholder=""/>
-                    <div *ngIf="productEntryForm.get('ProductName').errors && productEntryForm.get('ProductName').touched" class="invalid-status ">First Name is required</div>
+                    <div *ngIf="productEntryForm.get('ProductName').errors && productEntryForm.get('ProductName').touched" class="invalid-status ">Product Name is required</div>
                   </div>
 
                   <div class="ui-g-12 ui-md-3">
-                      <label class="control-label font-weight-bold">  Supplier : </label>
-                      <p-dropdown [options]="prodService.supplierList" formControlName="SupplierId" [filter]="true"></p-dropdown>
-                      <div *ngIf="productEntryForm.get('SupplierId').errors && productEntryForm.get('SupplierId').touched" class="invalid-status">Suppler Name is required</div>
+                      <label class="control-label font-weight-bold">  Brand : </label>
+                      <p-dropdown [options]="prodService.brandCombo" formControlName="BrandId" [filter]="true"></p-dropdown>
+                      <div *ngIf="productEntryForm.get('BrandId').errors && productEntryForm.get('BrandId').touched" class="invalid-status">Brand Name is required</div>
                   </div>
 
                   <div class="ui-g-12 ui-md-3">
                       <label class="control-label font-weight-bold">  Unit : </label>
-                    <p-dropdown [options]="prodService.unitList" formControlName="UnitId" [filter]="true"></p-dropdown>
+                    <p-dropdown [options]="prodService.unitCombo" formControlName="UnitId" [filter]="true"></p-dropdown>
                     <div *ngIf="productEntryForm.get('UnitId').errors && productEntryForm.get('UnitId').touched" class="invalid-status">Unit is required</div>
                   </div>
 
@@ -40,6 +40,17 @@
                     <div *ngIf="productEntryForm.get('CostPrice').errors && productEntryForm.get('CostPrice').touched" class="invalid-status">Cost Price is required</div>
                   </div>
 
+                  <div class="ui-g-12 ui-md-3">
+                    <label class="control-label font-weight-bold">   Weight : </label>
+                    <input pInputText type="text" formControlName="Weight" placeholder=""/>
+                    <div *ngIf="productEntryForm.get('Weight').errors && productEntryForm.get('Weight').touched" class="invalid-status">Weight is required</div>
+                  </div>
+
+                  <div class="ui-g-12 ui-md-3">
+                      <label class="control-label font-weight-bold">   ROL  : </label>
+                      <input pInputText type="text" formControlName="ROL" placeholder=""/>
+                    <div *ngIf="productEntryForm.get('ROL').errors && productEntryForm.get('ROL').touched" class="invalid-status">ROL is required</div>
+                  </div>
                 </div>
                 <div class="ui-g-12 ui-md-3">
                     <button pButton type="submit" label="Submit" icon="pi pi-save" iconPos="left" [disabled]="!productEntryForm.valid"></button>

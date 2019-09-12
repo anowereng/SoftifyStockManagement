@@ -19,28 +19,28 @@ export class ProductListComponent implements OnInit {
   public gridApi;
   public columnApi; productEntryForm: FormGroup;
   column = [
-    { headerName: 'Prod.Id', field: 'ProductId', width: 50, filter: 'agNumberColumnFilter' },
+    { headerName: 'Prod.Id', field: 'ProductId', width: 150, filter: 'agNumberColumnFilter' },
     { headerName: 'ProductName', field: 'ProductName', width: 150, filter: 'agTextColumnFilter' },
     { headerName: 'Qty', field: 'Qty', width: 100, filter: 'agNumberColumnFilter' },
     { headerName: 'SupplierName', field: 'SupplierName', width: 150 },
     { headerName: 'Unit', field: 'UnitName', width: 100 },
     { headerName: 'Sell Price', field: 'SellPrice', width: 100 },
     { headerName: 'CostPrice', field: 'CostPrice', width: 100 },
-    {
-      headerName: 'Action', width: 60, 
-      cellRenderer: 'buttonRenderer',
-      cellRendererParams: {
-        onClick: this.onBtnClick1.bind(this),
-        label: 'Edit'
-      }
-    },
-    {
-      cellRenderer: 'buttonRenderer', width: 60, 
-      cellRendererParams: {
-        onClick: this.onBtnClick2.bind(this),
-        label: 'Delete'
-      }
-    }
+    // {
+    //   headerName: 'Action', width: 60, 
+    //   cellRenderer: 'buttonRenderer',
+    //   cellRendererParams: {
+    //     onClick: this.onBtnClick1.bind(this),
+    //     label: 'Edit'
+    //   }
+    // },
+    // {
+    //   cellRenderer: 'buttonRenderer', width: 60, 
+    //   cellRendererParams: {
+    //     onClick: this.onBtnClick2.bind(this),
+    //     label: 'Delete'
+    //   }
+    // }
   ];
   drop(params) {
     console.log(params);
@@ -81,6 +81,7 @@ export class ProductListComponent implements OnInit {
   }
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
+    console.log( e)
   }
   onBtnClick2(e) {
     this.rowDataClicked2 = e.rowData;

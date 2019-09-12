@@ -1,66 +1,80 @@
 
-<form [formGroup]="mrEntryForm" (ngSubmit)="CreateMr()">
-        <div class="form-row">
 
-          <div class="col-xs-12 col-12 col-md-4 form-group">
-            <label class="control-label">   Mr Date : </label>
-            <!-- <input type="text" class="form-control form-control-sm"  formControlName="dtMr" bsDatepicker> -->
-            <input type="text" class="form-control form-control-sm" bsDatepicker formControlName="dtMr" [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }">
+        <!-- <div class="form-row">
+
+          <div class="col-xs-12 col-12 col-md-3 form-group">
+            <label class="contReamrks-label">   Mr Date : </label>
+            <input type="text" class="form-contReamrks form-contReamrks-sm" bsDatepicker formControlName="dtMr" [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }">
             <div *ngIf="mrEntryForm.get('dtMr').errors && mrEntryForm.get('dtMr').touched" class="invalid-status">MR Date  is required</div>
           </div>
 
-          <div class="form-group col-md-4">
-              <label class="control-label">  Supplier : </label>
-            <!-- <input type="text" class="form-control form-control-sm"   formControlName="SupplierId"> -->
-
-
-              <select2 [data]="exampleData" class="form-control form-control-sm" ngDefaultControl  formControlName="SupplierId" style="background-color:aliceblue" (valueChanged)="changed($event)"></select2>
+          <div class="form-group col-md-3">
+              <label class="contReamrks-label">  Supplier : </label>
+              <select2 [data]="exampleData" class="form-contReamrks form-contReamrks-sm" ngDefaultContReamrks  formControlName="SupplierId" style="background-color:aliceblue" (valueChanged)="changed($event)"></select2>
             <div *ngIf="mrEntryForm.get('SupplierId').errors && mrEntryForm.get('SupplierId').touched" class="invalid-status">Supplier Name is required</div>
           </div>
 
-          <div class="form-group col-md-4">
-              <label class="control-label ">   Loading Date : </label>
-              <input type="text" class="form-control  form-control-sm"  formControlName="dtLoading" bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }">
+          <div class="form-group col-md-3">
+              <label class="contReamrks-label ">   Loading Date : </label>
+              <input type="text" class="form-contReamrks  form-contReamrks-sm"  formControlName="dtLoading" bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }">
               <div *ngIf="mrEntryForm.get('dtLoading').errors && mrEntryForm.get('dtLoading').touched" class="invalid-status">Loading Date is required</div>
             </div>
+            <div class="ui-g-12 ui-md-3">
+              <label class="contReamrks-label font-weight-bold">  Bin : </label>
+            <p-dropdown [options]="prodService.binCombo" formControlName="BinId" [filter]="true"></p-dropdown>
+            <div *ngIf="mrEntryForm.get('BinId').errors && mrEntryForm.get('BinId').touched" class="invalid-status">Bin is required</div>
+          </div>
             <div class="form-group col-md-8">
-                <label class="control-label ">   Reamrks  : </label>
-                <textarea  type="" class="form-control  form-control-sm"  formControlName="Remarks" rows="2" ></textarea>
+                <label class="contReamrks-label ">   Reamrks  : </label>
+                <textarea  type="" class="form-contReamrks  form-contReamrks-sm"  formControlName="Remarks" rows="2" ></textarea>
               </div>
         </div>
-        <button type="submit" class="btn btn-secondary" [disabled]="!mrEntryForm.valid">Submit</button>
+        <button type="submit" class="btn btn-secondary" [disabled]="!mrEntryForm.valid">Submit</button> -->
 
-<!--
+
+
+
+<form [formGroup]="mrEntryForm" (ngSubmit)="CreateMr()">
   <p-panel header="Product">
       <div class="ui-g ui-fluid">
           <div class="ui-g-12 ui-lg-12">
               <div class="ui-g form-group">
                 <div class="ui-g-12 ui-md-3 ">
-                    <label class="control-label  font-weight-bold">   Mr Date : </label>
-                  <input pInputText type="text"size="30" formControlName="dtMr" placeholder=""/>
-                  <div *ngIf="mrEntryForm.get('dtMr').errors && mrEntryForm.get('dtMr').touched" class="invalid-status ">MR date is required</div>
-
+                    <label class="contReamrks-label  font-weight-bold">   MR Date : </label>
+                  <input pInputText bsDatepicker type="text"size="30" formControlName="dtMr" placeholder="" [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }"/>
+                  <div *ngIf="mrEntryForm.get('dtMr').errors && mrEntryForm.get('dtMr').touched" class="invalid-status " >MR Date is required</div>
                 </div>
 
                 <div class="ui-g-12 ui-md-3">
-                    <label class="control-label font-weight-bold">  Supplier : </label>
-                    <p-dropdown [options]="prodService.supplierList" formControlName="SupplierId" [filter]="true"></p-dropdown>
-                    <div *ngIf="mrEntryForm.get('SupplierId').errors && mrEntryForm.get('SupplierId').touched" class="invalid-status">Suppler Name is required</div>
+                    <label class="contReamrks-label font-weight-bold">  Supplier : </label>
+                    <p-dropdown [options]="prodService.brandCombo" formControlName="SupplierId" [filter]="true"></p-dropdown>
+                    <div *ngIf="mrEntryForm.get('SupplierId').errors && mrEntryForm.get('SupplierId').touched" class="invalid-status">Brand Name is required</div>
                 </div>
-
 
                 <div class="ui-g-12 ui-md-3">
-                  <label class="control-label font-weight-bold">  Loading Date : </label>
-                  <input pInputText type="text" formControlName="SellPrice" placeholder=""/>
-                  <div *ngIf="mrEntryForm.get('SellPrice').errors && mrEntryForm.get('SellPrice').touched" class="invalid-status">Sell Price is required</div>
+                    <label class="contReamrks-label font-weight-bold">  Loading Date : </label>
+                  <p-dropdown [options]="prodService.unitCombo" formControlName="dtLoading" [filter]="true"></p-dropdown>
+                  <div *ngIf="mrEntryForm.get('dtLoading').errors && mrEntryForm.get('dtLoading').touched" class="invalid-status">Unit is required</div>
                 </div>
+                
+                <div class="ui-g-12 ui-md-3">
+                  <label class="contReamrks-label font-weight-bold">  Bin Id : </label>
+                <p-dropdown [options]="prodService.unitCombo" formControlName="BinId" [filter]="true"></p-dropdown>
+                <div *ngIf="mrEntryForm.get('BinId').errors && mrEntryForm.get('BinId').touched" class="invalid-status">Bin is required</div>
+              </div>
 
+                <div class="ui-g-12 ui-md-3">
+                    <label class="contReamrks-label font-weight-bold">   Reamrks  : </label>
 
+                    <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="Reamrks"></textarea>
+                    <div *ngIf="mrEntryForm.get('Reamrks').errors && mrEntryForm.get('Reamrks').touched" class="invalid-status">Reamrks is required</div>
+                </div>
+              </div>
               <div class="ui-g-12 ui-md-3">
                   <button pButton type="submit" label="Submit" icon="pi pi-save" iconPos="left" [disabled]="!mrEntryForm.valid"></button>
                 </div>
             </div>
           </div>
-        </div>
-      <p-panel> -->
+
+</p-panel>
 </form>
